@@ -1,0 +1,11 @@
+﻿/* Botones primarios en azul oscuro */
+.btn-primary {
+    background-color: #033a50;
+    border-color: #033a50;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #d7ecf5;
+        border-color: #d7ecf5;
+    }
