@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataAccess.ConnectionDB;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Optimization;
@@ -13,9 +15,14 @@ namespace Presentation
     {
         void Application_Start(object sender, EventArgs e)
         {
+
             // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Crea la bd si no existe
+            Database.SetInitializer(new CreateDatabaseIfNotExists<RSContext>());
+
         }
     }
 }

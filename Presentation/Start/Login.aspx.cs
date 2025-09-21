@@ -37,8 +37,8 @@ namespace Presentation
                 Session["NombreCompleto"] = usuario.NombreCompleto;
                 Session["Rol"] = usuario.Rol;
 
-                // Redirigir al menú principal
-                Response.Redirect("MenuPrincipal.aspx");
+                // Redirigir a el foro de publicaciones
+                Response.Redirect("../Forum/Publications.aspx");
             }
             else
             {

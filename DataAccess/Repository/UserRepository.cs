@@ -49,6 +49,16 @@ namespace DataAccess.Repository
             }
         }
 
+        //Obtener usuario por correo
+        public AttributesUser ObtenerUsuarioPorCorreo(string correo)
+        {
+            using (var context = new RSContext())
+            {
+                return context.Usuarios.FirstOrDefault(u => u.Correo == correo);
+            }
+        }
+
+
         // Actualizar
         public bool ActualizarUsuario(AttributesUser usuario)
         {

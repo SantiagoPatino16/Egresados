@@ -8,7 +8,10 @@
     <title>Registro - Red Social Egresados</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/login-styles.css" rel="stylesheet" />
+        <!-- Para login y registro (css) -->
+    <link href="../css/login-styles.css" rel="stylesheet" />
+        <!-- Main css para botones -->
+    <link href="../css/Main.css" rel="stylesheet" />
 </head>
 <body class="bg-light">
     <form id="form1" runat="server">
@@ -16,7 +19,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="card shadow-lg rounded-3">
-                        <div class="card-header bg-primary text-white text-center">
+                        <div class="card-header card-header-custom text-center">
                             <h4>Crear cuenta</h4>
                         </div>
                         <div class="card-body">

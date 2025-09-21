@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AttributesUser.cs" />
+    <Compile Include="Attributes\AttributesComments.cs" />
+    <Compile Include="Attributes\AttributesPublications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

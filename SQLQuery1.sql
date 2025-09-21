@@ -1,0 +1,4 @@
+﻿Create Table hola(
+idhola INT IDENTITY (1,1) PRIMARY KEY,
+CONTENT NVARCHAR (50)
+)

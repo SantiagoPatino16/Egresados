@@ -25,6 +25,14 @@ namespace LogicBusiness.Service
                 return false;
             }
 
+            // Verificar si el correo ya existe
+            var existente = _userRepository.ObtenerUsuarioPorCorreo(usuario.Correo);
+            if (existente != null)
+            {
+                // El correo ya está registrado
+                return false;
+            }
+
             // Encriptamos con SHA256 antes de guardar
             usuario.ClaveHash = SecurityHelper.GetSHA256(usuario.ClaveHash);
 
@@ -64,7 +72,15 @@ namespace LogicBusiness.Service
 
         public AttributesUser ValidarUsuario(string correo, string clave)
         {
-            return _userRepository.ValidarUsuario(correo, clave);
+            var usuario = _userRepository.ObtenerUsuarioPorCorreo(correo);
+            if (usuario != null)
+            {
+                // Compara el hash ingresado con el hash guardado
+                string hashIngresado = SecurityHelper.GetSHA256(clave);
+                if (usuario.ClaveHash == hashIngresado)
+                    return usuario;
+            }
+            return null;
         }
     }
 }

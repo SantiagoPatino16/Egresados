@@ -1,11 +1,191 @@
-﻿/* Botones primarios en azul oscuro */
+﻿/* Colores Institucionales */
+:root {
+    --color-azul-oscuro: #002a3f; /* Sabio, inteligente */
+    --color-gris-claro: #e8e8e8; /* Tecnológico */
+    --color-cyan: #00b2c1; /* Transformador */
+    --color-amarillo: #fddc2f; /* Original y creativo */
+}
+
+/* Card principal */
+body .card {
+    border: 1px solid var(--color-gris-claro) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 12px rgba(0, 42, 63, 0.08) !important;
+    background-color: #fff !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 1rem !important;
+}
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 42, 63, 0.18);
+        border-color: var(--color-cyan);
+    }
+
+/* Card header */
+.card-header, .card-header-custom {
+    background-color: var(--color-azul-oscuro);
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    border-bottom: 3px solid var(--color-cyan);
+    padding: 1rem;
+}
+
+/* Card-body */
+.card-body {
+    background-color: var(--color-gris-claro);
+    border-radius: 0 0 10px 10px;
+    padding: 1.5rem;
+}
+
+/* Botón primario */
 .btn-primary {
-    background-color: #033a50;
-    border-color: #033a50;
-    color: white;
+    background-color: var(--color-cyan);
+    border-color: var(--color-cyan);
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
 }
 
     .btn-primary:hover {
-        background-color: #d7ecf5;
-        border-color: #d7ecf5;
+        background-color: var(--color-azul-oscuro);
+        border-color: var(--color-azul-oscuro);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .btn-primary:focus, .btn-primary:active {
+        box-shadow: 0 0 0 0.2rem rgba(0, 178, 193, 0.25);
+    }
+
+/* Botón secundario */
+.btn-secondary, .btn-light {
+    background-color: var(--color-amarillo);
+    border-color: var(--color-amarillo);
+    color: var(--color-azul-oscuro);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+    .btn-secondary:hover, .btn-light:hover {
+        background-color: #ffe066;
+        border-color: #ffe066;
+        color: var(--color-azul-oscuro);
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary:focus, .btn-light:focus {
+        box-shadow: 0 0 0 0.2rem rgba(253, 220, 47, 0.25);
+    }
+
+/* Botón de enlace (para los botones "Ver comentarios/respuestas") */
+.btn-link {
+    color: var(--color-cyan);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    .btn-link:hover {
+        color: var(--color-azul-oscuro);
+        text-decoration: underline;
+    }
+
+/* Etiquetas y textos destacados */
+.text-danger {
+    color: var(--color-amarillo) !important;
+    font-weight: bold;
+}
+
+.text-info {
+    color: var(--color-cyan) !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* Paneles y fondos */
+.bg-info {
+    background-color: var(--color-cyan) !important;
+    color: #fff !important;
+}
+
+.bg-primary {
+    background-color: var(--color-azul-oscuro) !important;
+    color: #fff !important;
+}
+
+.bg-light {
+    background-color: var(--color-gris-claro) !important;
+    color: #002a3f !important;
+}
+
+.bg-warning {
+    background-color: var(--color-amarillo) !important;
+    color: #002a3f !important;
+}
+
+/* Modal institucional */
+.modal-header.bg-danger {
+    background-color: var(--color-amarillo) !important;
+    color: #002a3f !important;
+    border-bottom: 2px solid var(--color-cyan);
+}
+
+/* Ajustes específicos para el foro */
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    .form-control:focus {
+        border-color: var(--color-cyan);
+        box-shadow: 0 0 0 0.2rem rgba(0, 178, 193, 0.25);
+        outline: 0;
+    }
+
+/* Estilos para comentarios anidados */
+.ml-4 {
+    margin-left: 2rem;
+}
+
+.border-left {
+    border-left: 3px solid var(--color-cyan);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-header {
+        font-size: 1.1rem;
+        padding: 0.75rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .ml-4 {
+        margin-left: 1rem;
+    }
+}
+
+/* Animaciones suaves */
+.transition-all {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Sombra institucional */
+.shadow-institucional {
+    box-shadow: 0 4px 12px rgba(0, 42, 63, 0.08);
+}
+
+    .shadow-institucional:hover {
+        box-shadow: 0 8px 24px rgba(0, 42, 63, 0.18);
     }

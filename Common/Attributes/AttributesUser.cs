@@ -4,8 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Common.Entities
 {
+    [Table("Usuarios")]
     public class AttributesUser
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdUsuario { get; set; }
         public string NombreCompleto { get; set; }
         public string Correo { get; set; }
