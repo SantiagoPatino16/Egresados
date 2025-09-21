@@ -1,8 +1,17 @@
 ﻿using Common.Entities;
+using DataAccess.ConnectionDB;
 using DataAccess.Repository;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
+using Google.Apis.Services;
 using LogicBusiness.Security;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Drawing;
+using System.IO;
+using System.Web;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LogicBusiness.Service
 {
@@ -33,15 +42,16 @@ namespace LogicBusiness.Service
                 return false;
             }
 
-            // Encriptamos con SHA256 antes de guardar
-            usuario.ClaveHash = SecurityHelper.GetSHA256(usuario.ClaveHash);
+            // Encriptamos con las funciones previamente creadas
+            usuario.ClaveHash = SecurityHelper.HashPassword(usuario.ClaveHash);
+
 
             return _userRepository.RegistrarUsuario(usuario);
         }
         //Login
         public AttributesUser Login(string correo, string clave)
         {
-            string claveHash = SecurityHelper.GetSHA256(clave);
+            string claveHash = SecurityHelper.HashPassword(clave);
 
             return _userRepository.Login(correo, claveHash);
         }
@@ -75,12 +85,14 @@ namespace LogicBusiness.Service
             var usuario = _userRepository.ObtenerUsuarioPorCorreo(correo);
             if (usuario != null)
             {
-                // Compara el hash ingresado con el hash guardado
-                string hashIngresado = SecurityHelper.GetSHA256(clave);
-                if (usuario.ClaveHash == hashIngresado)
+                // Verifica usando el hash guardado (con sal)
+                bool esValido = SecurityHelper.VerifyPassword(clave, usuario.ClaveHash);
+                if (esValido)
                     return usuario;
             }
             return null;
         }
+        
+
     }
 }

@@ -16,5 +16,7 @@ namespace Common.Entities
         public string Rol { get; set; }
         public DateTime FechaRegistro { get; set; }
         public bool Activo { get; set; }
+        public string FotoPerfil { get; set; } 
+
     }
 }

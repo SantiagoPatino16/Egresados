@@ -1,8 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Common.Entities;
+﻿using Common.Entities;
 using DataAccess.ConnectionDB;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
+using Google.Apis.Services;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
 
 namespace DataAccess.Repository
 {
@@ -137,5 +142,18 @@ namespace DataAccess.Repository
                 return null; // No existe o clave incorrecta
             }
         }
+        public void ActualizarFotoPerfil(int idUsuario, string rutaFoto)
+        {
+            using (var context = new RSContext())
+            {
+                var usuario = context.Usuarios.Find(idUsuario);
+                if (usuario != null)
+                {
+                    usuario.FotoPerfil = rutaFoto;
+                    context.SaveChanges();
+                }
+            }
+        }
+
     }
 }
