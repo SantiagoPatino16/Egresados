@@ -12,31 +12,42 @@ namespace Presentation.Forum
     {
         private PublicationsService _publicationsService;
         private CommentsService _commentsService;
+        private int idCategoria = 1; // Variable para almacenar la categoría seleccionada
+        private CategoriesService _categoriesService;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             _publicationsService = new PublicationsService();
             _commentsService = new CommentsService();
+            _categoriesService = new CategoriesService();
 
             if (!IsPostBack)
             {
+                CargarCategorias();
                 CargarPublicaciones();
             }
         }
-
-        private void CargarPublicaciones()
+        //Listar publicaciones con un párametro de categoría
+        private void CargarPublicaciones(int? idCategoria = null)
         {
-            try
-            {
-                var publicaciones = _publicationsService.ObtenerPublicacionesConComentarios();
-                rptPublicaciones.DataSource = publicaciones;
-                rptPublicaciones.DataBind();
-            }
-            catch (Exception ex)
-            {
-                MostrarModalError(); // Mostrar modal de error creado en la parte inferior del código
-            }
+            var publicaciones = _publicationsService.ObtenerPublicacionesConComentarios(idCategoria);
+
+            rptPublicaciones.DataSource = publicaciones;
+            rptPublicaciones.DataBind();
         }
+
+        // Cargar categorías para mostrar en el repeater
+        private void CargarCategorias()
+        {
+            var categorias = _categoriesService.ListarTodas();
+
+            rptCategorias.DataSource = categorias;
+            rptCategorias.DataBind();
+        }
+
+
+
+
 
         protected void btnPublicar_Click(object sender, EventArgs e)
         {
@@ -47,13 +58,16 @@ namespace Presentation.Forum
                 {
                     // Aquí deberías obtener el ID del usuario actual
                     int idUsuarioActual = ObtenerIdUsuarioActual(); // Implementa este método según tu sistema de autenticación
+                    //Recuperar la categoría seleccionada
+                    int idCategoria = int.TryParse(hfSelectedCategoria.Value, out int selectedId) ? selectedId : 1;
 
                     var nuevaPublicacion = new AttributesPublications
                     {
                         IdUsuario = idUsuarioActual,
                         NombreUsuario = ObtenerNombreUsuarioActual(), // Implementa este método
                         Contenido = contenido,
-                        Fecha = DateTime.Now
+                        Fecha = DateTime.Now,
+                        IdCategoria = idCategoria
                     };
 
                     _publicationsService.Crear(nuevaPublicacion);
@@ -219,6 +233,27 @@ namespace Presentation.Forum
                 }
             }
         }
+        // Filtrar publicaciones por categoría al hacer clic en el link de categoría
+        protected void lnkCategoria_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = (LinkButton)sender;
+            int idCategoria = Convert.ToInt32(lnk.CommandArgument);
+            this.idCategoria = idCategoria; // Guardar la categoría seleccionada
+            // Recargar publicaciones filtradas por esta categoría
+            CargarPublicaciones(idCategoria);
+        }
+
+        //obtener el id de la categoría seleccionada
+        protected void rptCategorias_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "SelectCategoria")
+            {
+                int idCategoria = Convert.ToInt32(e.CommandArgument);
+                hfSelectedCategoria.Value = idCategoria.ToString(); // persistir
+                CargarPublicaciones(idCategoria);
+            }
+        }
+
 
         // Métodos auxiliares - Debes implementarlos según tu sistema de autenticación
         private int ObtenerIdUsuarioActual()

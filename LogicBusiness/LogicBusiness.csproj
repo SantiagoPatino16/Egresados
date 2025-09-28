@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecurityHelper.cs" />
+    <Compile Include="Service\CategoriesService.cs" />
     <Compile Include="Service\CommentsService.cs" />
     <Compile Include="Service\PublicationsService.cs" />
     <Compile Include="Service\UserService.cs" />
@@ -90,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Credentials\credentials.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

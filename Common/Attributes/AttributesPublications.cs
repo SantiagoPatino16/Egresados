@@ -20,7 +20,11 @@ namespace Common.Attributes
         public string Contenido { get; set; }
         public DateTime Fecha { get; set; }
 
+        // FK a Categoría predefiniendo la entrada de la publicaciones a categoría "general" (IdCategoria = 1)
+        public int? IdCategoria { get; set; }
+
         // Relación
+        public virtual AttributesCategories Categoria{ get; set; }
         public virtual AttributesUser Usuario { get; set; }
         public virtual ICollection<AttributesComments> Comentarios { get; set; }
     }

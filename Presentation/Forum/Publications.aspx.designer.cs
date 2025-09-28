@@ -15,6 +15,24 @@ namespace Presentation.Forum
     {
 
         /// <summary>
+        /// Control lblMensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeError;
+
+        /// <summary>
+        /// Control phListaPublicaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phListaPublicaciones;
+
+        /// <summary>
         /// Control txtContenido.
         /// </summary>
         /// <remarks>
@@ -186,12 +204,21 @@ namespace Presentation.Forum
         protected global::System.Web.UI.WebControls.Repeater rptRespuestas;
 
         /// <summary>
-        /// Control lblMensajeError.
+        /// Control hfSelectedCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeError;
+        protected global::System.Web.UI.WebControls.HiddenField hfSelectedCategoria;
+
+        /// <summary>
+        /// Control rptCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptCategorias;
     }
 }

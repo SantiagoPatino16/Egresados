@@ -14,10 +14,12 @@ namespace DataAccess.ConnectionDB
         public DbSet<AttributesUser> Usuarios { get; set; }
         public DbSet<AttributesPublications> Publicaciones { get; set; }
         public DbSet<AttributesComments> Comentarios { get; set; }
+        public DbSet<AttributesCategories> Categorias { get; set; }
 
         //Permite las relaciones y añade el "DELETE ON CASCADE" de Publicaciones --> comentarios
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
 
             // Usuarios → Publicaciones (sin cascada)

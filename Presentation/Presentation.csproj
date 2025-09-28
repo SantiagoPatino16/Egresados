@@ -138,6 +138,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="css\login-styles.css" />
     <Content Include="css\Main.css" />
+    <Content Include="Events\EventsLoad.aspx" />
     <Content Include="Forum\Publications.aspx" />
     <Content Include="Global.asax" />
     <Content Include="User\Profile.aspx" />
@@ -206,6 +207,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Events\EventsLoad.aspx.cs">
+      <DependentUpon>EventsLoad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Events\EventsLoad.aspx.designer.cs">
+      <DependentUpon>EventsLoad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forum\Publications.aspx.cs">
       <DependentUpon>Publications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,7 +255,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="JobBoard\" />
     <Folder Include="Resources\Profile\" />
   </ItemGroup>

@@ -28,6 +28,29 @@ namespace DataAccess.Repository
                            .OrderByDescending(p => p.Fecha)
                            .ToList();
         }
+      // Listar publicaciones por categoría
+        public List<AttributesPublications> ListarPorCategoria(int idCategoria)
+        {
+            return _context.Publicaciones
+                           .Where(p => p.IdCategoria == idCategoria)
+                           .ToList();
+        }
+
+        public List<AttributesPublications> ObtenerPublicacionesConComentarios(int? idCategoria = null)
+        {
+            var query = _context.Publicaciones
+                .Include(p => p.Comentarios) // Cargar comentarios
+                .AsQueryable();
+
+            if (idCategoria.HasValue)
+            {
+                query = query.Where(p => p.IdCategoria == idCategoria.Value);
+            }
+
+            // Si no hay filtro, simplemente devuelve todas ordenadas por Fecha
+            return query.OrderByDescending(p => p.Fecha).ToList();
+        }
+
 
         // Agregar nueva publicación
         public void Agregar(AttributesPublications publicacion)
