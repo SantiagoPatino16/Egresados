@@ -22,7 +22,16 @@ namespace DataAccess.ConnectionDB
         public DbSet<AttributesContractType> TiposContrato { get; set; }
         public DbSet<AttributesCategoriesJobs> CategoriasEmpleo { get; set; }
         public DbSet<AttributesWorkModalities> ModalidadesTrabajo { get; set; }
+<<<<<<< Updated upstream
         public DbSet<AttributesStatusApplication> EstadosPostulacion { get; set; }
+=======
+        public DbSet<AttributesStatusApplication> EstadoPostulacion { get; set; }
+        public DbSet<AttributesMessages> Mensajes { get; set; }
+        public DbSet<AttributesMessageReactions> Chats { get; set; }
+        public DbSet<AttributesMessageAttachments> Adjuntos { get; set; }
+
+
+>>>>>>> Stashed changes
 
         //Permite las relaciones y añade el "DELETE ON CASCADE" de Publicaciones --> comentarios
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -43,6 +52,12 @@ namespace DataAccess.ConnectionDB
                 .WithMany()
                 .HasForeignKey(c => c.IdPublicacion)
                 .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<AttributesMessages>()
+                .HasRequired(m => m.Receptor)
+                .WithMany()
+                .HasForeignKey(m => m.IdReceptor)
+                .WillCascadeOnDelete(false);
         }
 
     }
