@@ -108,12 +108,18 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ApplicationsRepository.cs" />
     <Compile Include="Repository\CategoriesJobsRepository.cs" />
     <Compile Include="Repository\CategoriesRepository.cs" />
     <Compile Include="Repository\CommentsRepository.cs" />
+    <Compile Include="Repository\ContractTypeRepository.cs" />
     <Compile Include="Repository\EventsRepository.cs" />
+    <Compile Include="Repository\FavoritesJobsRepository.cs" />
+    <Compile Include="Repository\JobOffertsRepository.cs" />
     <Compile Include="Repository\PublicationsRepository.cs" />
+    <Compile Include="Repository\StatusApplicationRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\WorkModalitiesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

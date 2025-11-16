@@ -1,8 +1,8 @@
 ﻿using Common.Attributes;
 using DataAccess.ConnectionDB;
-using System.Data.Entity; // <-- EF6
-using System.Linq;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace DataAccess.Repository
 {
@@ -15,44 +15,46 @@ namespace DataAccess.Repository
             _context = new RSContext();
         }
 
-        // Listar todos los estados
+        // ➤ Listar todos los estados con su Postulación
         public List<AttributesStatusApplication> ListarTodos()
         {
-            return _context.EstadosPostulacion
+            return _context.EstadoPostulacion
                 .Include(e => e.Postulacion)
                 .ToList();
         }
 
-        // Obtener por Id
+        // ➤ Obtener un estado por ID
         public AttributesStatusApplication ObtenerPorId(int id)
         {
-            return _context.EstadosPostulacion
+            return _context.EstadoPostulacion
                 .Include(e => e.Postulacion)
                 .FirstOrDefault(e => e.IdEstadoPostulacion == id);
         }
 
-        // Agregar
+        // ➤ Agregar un nuevo estado
         public void Agregar(AttributesStatusApplication estado)
         {
-            _context.EstadosPostulacion.Add(estado);
+            _context.EstadoPostulacion.Add(estado);
             _context.SaveChanges();
         }
 
-        // Eliminar
+        // ➤ Eliminar estado por ID
         public void Eliminar(int id)
         {
-            var estado = _context.EstadosPostulacion.Find(id);
+            var estado = _context.EstadoPostulacion.Find(id);
+
             if (estado != null)
             {
-                _context.EstadosPostulacion.Remove(estado);
+                _context.EstadoPostulacion.Remove(estado);
                 _context.SaveChanges();
             }
         }
 
-        // Actualizar
+        // ➤ Actualizar un estado existente
         public void Actualizar(AttributesStatusApplication estado)
         {
-            var existente = _context.EstadosPostulacion.Find(estado.IdEstadoPostulacion);
+            var existente = _context.EstadoPostulacion.Find(estado.IdEstadoPostulacion);
+
             if (existente != null)
             {
                 existente.Estado = estado.Estado;

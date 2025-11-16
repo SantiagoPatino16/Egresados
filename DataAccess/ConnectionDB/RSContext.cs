@@ -22,7 +22,7 @@ namespace DataAccess.ConnectionDB
         public DbSet<AttributesContractType> TiposContrato { get; set; }
         public DbSet<AttributesCategoriesJobs> CategoriasEmpleo { get; set; }
         public DbSet<AttributesWorkModalities> ModalidadesTrabajo { get; set; }
-        public DbSet<AttributesStatusApplication> EstadosPostulacion { get; set; }
+        public DbSet<AttributesStatusApplication> EstadoPostulacion { get; set; }
 
         //Permite las relaciones y añade el "DELETE ON CASCADE" de Publicaciones --> comentarios
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
