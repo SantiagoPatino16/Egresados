@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Common.Entities;
-using LogicBusiness.Helpers;
 using LogicBusiness.Service;
 
 namespace Presentation.Start
@@ -13,79 +8,80 @@ namespace Presentation.Start
     public partial class RegisterCompany : System.Web.UI.Page
     {
         private readonly UserService _userService = new UserService();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            var usuario = new AttributesUser
+            try
             {
-                Nombre = txtNombreEmpresa.Text.Trim(),
-                Nit = txtNIT.Text.Trim(),
-                PersonaRepresentante = txtRepresentante.Text.Trim(),
-                CargoRepresentante = txtCargo.Text.Trim(),
-                TelefonoContacto = txtTelefono.Text.Trim(),
-                CiudadEmpresa = txtCiudad.Text.Trim(),
-                SectorIndustria = txtSector.Text.Trim(),
-                DescripcionEmpresa = txtDescripcion.Text.Trim(),
-                Correo = txtCorreo.Text.Trim(),
-                ClaveHash = txtClave.Text.Trim(),
-                Rol = "Empresa",
-                FechaRegistro = DateTime.Now,
-                Activo = true,
-                Verificado = false
-            };
+                // VALIDACIÓN BÁSICA
+                if (string.IsNullOrWhiteSpace(txtNombreEmpresa.Text) ||
+                    string.IsNullOrWhiteSpace(txtNIT.Text) ||
+                    string.IsNullOrWhiteSpace(txtRepresentante.Text) ||
+                    string.IsNullOrWhiteSpace(txtCargo.Text) ||
+                    string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                    string.IsNullOrWhiteSpace(txtCiudad.Text) ||
+                    string.IsNullOrWhiteSpace(txtSector.Text) ||
+                    string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                    string.IsNullOrWhiteSpace(txtClave.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor complete todos los campos.');", true);
+                    return;
+                }
 
-            var resultado = _userService.RegistrarEmpresa(usuario);
+                var usuario = new AttributesUser
+                {
+                    Nombre = txtNombreEmpresa.Text.Trim(),
+                    Nit = txtNIT.Text.Trim(),
+                    PersonaRepresentante = txtRepresentante.Text.Trim(),
+                    CargoRepresentante = txtCargo.Text.Trim(),
+                    TelefonoContacto = txtTelefono.Text.Trim(),
+                    CiudadEmpresa = txtCiudad.Text.Trim(),
+                    SectorIndustria = txtSector.Text.Trim(),
+                    DescripcionEmpresa = txtDescripcion.Text.Trim(),
+                    Correo = txtCorreo.Text.Trim(),
+                    ClaveHash = txtClave.Text.Trim(),
+                    Rol = "Empresa",
+                    FechaRegistro = DateTime.Now,
+                    Activo = true,
+                    Verificado = false
+                };
 
-            if (resultado)
-            {
-                MostrarModalRedireccion("Éxito", "¡Solicitud enviada con éxito! Tu registro será revisado y confirmado pronto.",
-                    "../Start/Login.aspx");
+                bool resultado = _userService.RegistrarEmpresa(usuario);
+
+                if (resultado)
+                {
+                    LimpiarCampos();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('¡Solicitud enviada con éxito!');", true);
+                    Response.Redirect("../Start/Login.aspx");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error al registrar la empresa.');", true);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MostrarModal("Error", "Error al registrar la empresa. Por favor, verifica los datos.");
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Ocurrió un error: " + ex.Message + "');", true);
             }
         }
-        public void MostrarModal(string titulo, string mensaje, string textoBoton = "Cerrar")
+
+        private void LimpiarCampos()
         {
-            litTituloModal.Text = titulo;
-            litMensajeModal.Text = mensaje;
-            litTextoBotonModal.Text = textoBoton;
-
-            string script = @"
-        var modal = document.getElementById('modalMensaje');
-        modal.removeAttribute('data-url');
-        var bsModal = new bootstrap.Modal(modal);
-        bsModal.show();";
-
-            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", script, true);
+            txtNombreEmpresa.Text = "";
+            txtNIT.Text = "";
+            txtRepresentante.Text = "";
+            txtCargo.Text = "";
+            txtTelefono.Text = "";
+            txtCiudad.Text = "";
+            txtSector.Text = "";
+            txtDescripcion.Text = "";
+            txtCorreo.Text = "";
+            txtClave.Text = "";
         }
-
-        public void MostrarModalRedireccion(string titulo, string mensaje, string urlRedireccion, string textoBoton = "Continuar")
-        {
-            litTituloModal.Text = titulo;
-            litMensajeModal.Text = mensaje;
-            litTextoBotonModal.Text = textoBoton;
-
-            string script = $@"
-        var modal = document.getElementById('modalMensaje');
-        modal.setAttribute('data-url', '{urlRedireccion}');
-        var bsModal = new bootstrap.Modal(modal);
-        bsModal.show();
-
-        var btnCerrar = modal.querySelector('.btn[data-bs-dismiss=""modal""]');
-        if (btnCerrar) {{
-            btnCerrar.addEventListener('click', function() {{
-                window.location.href = '{urlRedireccion}';
-            }});
-        }}";
-
-            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalRedirect", script, true);
-        }
-
-
     }
 }

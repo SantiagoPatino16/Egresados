@@ -1,14 +1,12 @@
-﻿body {
-    background-color: #ffffff;
+﻿#background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
 }
 
-#Image1 {
-    content: url("../Resources/bannerPascual.png");
-}
-
-cardLogin{
-
-}
-#txtLogin {
-    color: rgba(0, 29, 53);
+/* Animación suave del modal */
+.modal-content {
+    border-radius: 1rem;
+    overflow: hidden;
 }

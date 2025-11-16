@@ -60,30 +60,12 @@ namespace Presentation
         protected global::System.Web.UI.WebControls.Button btnIngresar;
 
         /// <summary>
-        /// Control litTituloModal.
+        /// Control lblMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTituloModal;
-
-        /// <summary>
-        /// Control litMensajeModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litMensajeModal;
-
-        /// <summary>
-        /// Control litTextoBotonModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTextoBotonModal;
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
     }
 }

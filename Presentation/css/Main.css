@@ -19,14 +19,18 @@ body .card {
 }
 
 /*  Card header */
-.card-header, .card-header-custom {
-    background-color: var(--color-azul-oscuro);
-    color: var(--color-blanco);
-    font-weight: bold;
+
+.card-header {
+    background-color: var(--color-azul-oscuro) !important;
+    color: var(--color-blanco) !important;
+    font-weight: 700;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    font-size: 1.2rem;
-    border-bottom: 3px solid var(--color-cyan);
-    padding: 1rem;
+    padding: 0.9rem 1.2rem;
+    border: none !important;
+    border-radius: 12px 12px 0 0 !important;
+    letter-spacing: 0.5px;
+    box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
 }
 
 /*  Card-body */
@@ -133,3 +137,206 @@ body .card {
         outline-offset: 2px;
     }
 
+.categoria-activa {
+    background-color: var(--color-cyan) !important;
+    color: white !important;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.categoria-activa a {
+    color: white !important;
+}
+
+.list-group-item:hover,
+.list-group-item:hover a {
+    background-color: var(--color-azul-oscuro) !important;
+    color: #fff !important;
+}
+
+/* MODO OSCURO */
+body.dark-mode {
+    --color-azul-oscuro: #0d1b2a; /* Azul profundo */
+    --color-cyan: #00b4d8; /* Acento */
+    --color-blanco: #1a1a1a; /* Fondo gris oscuro */
+    color: #e5e5e5;
+    background-color: var(--color-blanco);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    /* TARJETAS */
+    body.dark-mode .card {
+        background-color: #1f1f1f !important;
+        border: 1px solid #2c2c2c !important;
+        box-shadow: 0 4px 10px rgba(0, 180, 216, 0.08) !important;
+        transition: all 0.3s ease;
+    }
+
+        body.dark-mode .card:hover {
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.18) !important;
+        }
+
+    /* Encabezados de tarjetas */
+    body.dark-mode .card-header,
+    body.dark-mode .card-header-custom {
+        background: linear-gradient(90deg, #0077b6, #00b4d8);
+        color: #fff !important;
+        border-bottom: none !important;
+    }
+        body.dark-mode .card-header *,
+        body.dark-mode .card-header-custom * {
+            color: #fff !important;
+        }
+
+    /* Cuerpo */
+    body.dark-mode .card-body {
+        background-color: #1f1f1f !important;
+        color: #e5e5e5 !important;
+    }
+
+    /* BOTONES */
+    body.dark-mode .btn-primary {
+        background-color: #00b4d8 !important;
+        border: none !important;
+        color: #0d1b2a !important;
+        font-weight: 600;
+    }
+
+        body.dark-mode .btn-primary:hover {
+            background-color: #0096c7 !important;
+            color: #fff !important;
+            transform: translateY(-2px);
+        }
+
+    /* INPUTS */
+    body.dark-mode .form-control {
+        background-color: #121212 !important;
+        color: #e5e5e5 !important;
+        border: 1px solid #2c2c2c !important;
+    }
+
+        body.dark-mode .form-control:focus {
+            border-color: #00b4d8 !important;
+            box-shadow: 0 0 0 0.25rem rgba(0, 180, 216, 0.25) !important;
+        }
+
+    /* ENLACES */
+    body.dark-mode .btn-link {
+        color: #00b4d8 !important;
+    }
+
+        body.dark-mode .btn-link:hover {
+            color: #90e0ef !important;
+            text-decoration: underline;
+        }
+
+    /* SOMBRA INSTITUCIONAL */
+    body.dark-mode .shadow-institucional {
+        background-color: #1f1f1f !important;
+        box-shadow: 0 6px 20px rgba(0, 180, 216, 0.15) !important;
+    }
+
+    /* Fondos de Bootstrap (blancos por defecto) */
+    body.dark-mode .bg-light,
+    body.dark-mode .bg-white {
+        background-color: #1f1f1f !important;
+        color: #e5e5e5 !important;
+    }
+
+    /* List group */
+    body.dark-mode .list-group-item {
+        background-color: #1f1f1f !important;
+        color: #e5e5e5 !important;
+        border-color: #2c2c2c !important;
+    }
+
+    /* MODAL */
+    body.dark-mode .modal-content {
+        background-color: #1f1f1f !important;
+        color: #e5e5e5 !important;
+        border: 1px solid #2c2c2c !important;
+    }
+
+    body.dark-mode .modal-header {
+        background-color: #1f1f1f !important;
+        border-bottom: 1px solid #2c2c2c !important;
+        color: #e5e5e5 !important;
+    }
+
+    body.dark-mode .modal-body {
+        background-color: #1f1f1f !important;
+        color: #e5e5e5 !important;
+    }
+
+    body.dark-mode .modal-footer {
+        background-color: #1f1f1f !important;
+        border-top: 1px solid #2c2c2c !important;
+    }
+
+    /* NAVBAR */
+    body.dark-mode .navbar {
+        background-color: #1f1f1f !important;
+        border-bottom: 1px solid #2c2c2c !important;
+    }
+
+        body.dark-mode .navbar .nav-link,
+        body.dark-mode .navbar-brand {
+            color: #e5e5e5 !important;
+        }
+
+    body.dark-mode .dropdown-menu {
+        background-color: #1f1f1f !important;
+        border: 1px solid #2c2c2c !important;
+    }
+
+    body.dark-mode .dropdown-item {
+        color: #e5e5e5 !important;
+    }
+
+        body.dark-mode .dropdown-item:hover {
+            background-color: #2c2c2c !important;
+        }
+
+    /* FOOTER */
+    body.dark-mode footer {
+        background-color: #1f1f1f !important;
+        color: #e5e5e5 !important;
+        border-top: 1px solid #2c2c2c !important;
+    }
+
+body.dark-mode label,
+body.dark-mode .form-label,
+body.dark-mode small,
+body.dark-mode .small,
+body.dark-mode .text-muted,
+body.dark-mode .fw-semibold {
+    color: #e5e5e5 !important;
+}
+
+body.dark-mode textarea::placeholder,
+body.dark-mode input::placeholder {
+    color: #ffffff !important;
+    opacity: 0.8 !important;
+}
+
+body.dark-mode .text-muted {
+    color: #c0c0c0 !important;
+}
+
+body.dark-mode .card-title {
+    color: #c0c0c0 !important;
+}
+
+.dark-mode .categoria-activa {
+    background-color: #008b8b !important;
+    color: white !important;
+}
+
+.dark-mode .categoria-activa a {
+    color: white !important;
+}
+
+.dark-mode .list-group-item:hover {
+    background-color: #001f3f !important;
+    color: #fff;
+}

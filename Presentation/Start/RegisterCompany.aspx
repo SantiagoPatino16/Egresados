@@ -1,94 +1,157 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterCompany.aspx.cs" Inherits="Presentation.Start.RegisterCompany" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Registro empresa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../css/login-styles.css" rel="stylesheet" />
-    <link href="../css/Main.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro de Empresa</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="css/login-styles.css" rel="stylesheet" />
 </head>
-<body>
-    <form id="form1" runat="server">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-7">
-                    <div class="card shadow-lg rounded-3">
-                        <div class="card-header text-center bg-primary text-white">
-                            <h4>Registro de Empresa</h4>
-                            <small>Completa la información básica para enviar tu solicitud</small>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <asp:Label ID="lblNombreEmpresa" runat="server" Text="Nombre de la empresa" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtNombreEmpresa" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblNIT" runat="server" Text="NIT o identificación tributaria" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtNIT" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblRepresentante" runat="server" Text="Nombre del representante legal" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtRepresentante" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblCargo" runat="server" Text="Cargo del representante" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtCargo" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblTelefono" runat="server" Text="Teléfono de contacto" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" TextMode="Phone"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblCiudad" runat="server" Text="Ciudad sede principal" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblSector" runat="server" Text="Sector o industria" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtSector" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblDescripcion" runat="server" Text="Descripción corta de la empresa" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblCorreo" runat="server" Text="Correo de contacto" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <asp:Label ID="lblClave" runat="server" Text="Contraseña" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtClave" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                            </div>
-                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-success w-100" OnClick="btnRegistrar_Click" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+<body id="background" class="w-full min-h-screen flex flex-col items-center justify-start pt-6 pb-10">
+
+    <form id="form1" runat="server" class="w-full max-w-lg bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+
+        <!-- LOGO -->
+        <div class="flex justify-center mb-2">
+            <asp:Image ID="Image1" runat="server" CssClass="h-16 w-auto rounded-md" ImageUrl="~/Resources/Logo.png" />
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Modal para mostrar mensajes -->
-        <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title" id="modalMensajeLabel">
-                            <asp:Literal ID="litTituloModal" runat="server"></asp:Literal>
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <asp:Literal ID="litMensajeModal" runat="server"></asp:Literal>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <asp:Literal ID="litTextoBotonModal" runat="server"></asp:Literal>
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+        <!-- TÍTULO -->
+        <div class="text-center mb-3">
+            <h2 class="text-2xl font-bold tracking-tight text-[#013549]">Registro de Empresa</h2>
+            <p class="text-xs text-[#013549]">Completa la información para enviar tu solicitud</p>
         </div>
+
+        <!-- Nombre Empresa -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Nombre de la empresa</label>
+            <asp:TextBox ID="txtNombreEmpresa" runat="server"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"
+                placeholder="Ej: TechCorp SAS"></asp:TextBox>
+        </div>
+
+        <!-- NIT -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">NIT o identificación tributaria</label>
+            <asp:TextBox ID="txtNIT" runat="server"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Representante -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Nombre del representante legal</label>
+            <asp:TextBox ID="txtRepresentante" runat="server"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Cargo -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Cargo del representante</label>
+            <asp:TextBox ID="txtCargo" runat="server"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Teléfono de contacto</label>
+            <asp:TextBox ID="txtTelefono" runat="server" TextMode="Phone"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Ciudad -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Ciudad sede principal</label>
+            <asp:TextBox ID="txtCiudad" runat="server"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Sector -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Sector o industria</label>
+            <asp:TextBox ID="txtSector" runat="server"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Descripción corta</label>
+            <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Rows="2"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Correo -->
+        <div class="mb-2">
+            <label class="block text-sm font-medium text-[#013549]">Correo de contacto</label>
+            <asp:TextBox ID="txtCorreo" runat="server" TextMode="Email"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- Clave -->
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-[#013549]">Contraseña</label>
+            <asp:TextBox ID="txtClave" runat="server" TextMode="Password"
+                CssClass="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-lg text-[#013549]
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 px-2 py-1"></asp:TextBox>
+        </div>
+
+        <!-- BOTÓN REGISTRAR -->
+        <asp:Button ID="btnRegistrar" runat="server"
+            Text="REGISTRAR EMPRESA"
+            CssClass="w-full py-2 rounded-lg bg-[#013549] hover:bg-[#00b2c1] transition-all duration-300
+            font-semibold text-white shadow-md hover:shadow-[#013549]/30"
+            OnClick="btnRegistrar_Click" />
+
+        <!-- Volver -->
+        <div class="text-center mt-3">
+            <a href="Login.aspx" class="text-[#013549] text-sm font-semibold hover:text-indigo-500 transition">
+                ¿Ya tienes cuenta? Inicia sesión
+            </a>
+        </div>
+
     </form>
+
+    <!-- Fondo dinámico -->
+    <script>
+        const background = document.getElementById('background');
+        const images = [
+            '../Resources/Login-1.jpg',
+            '../Resources/Login-2.jpg',
+            '../Resources/Login-3.jpg',
+            '../Resources/Login-4.jpg',
+        ];
+        let index = 0;
+
+        function changeBackground() {
+            const img = new Image();
+            img.src = images[index];
+            img.onload = () => {
+                background.style.backgroundImage = `url('${images[index]}')`;
+                index = (index + 1) % images.length;
+            };
+        }
+
+        changeBackground();
+        setInterval(changeBackground, 6000);
+    </script>
+
 </body>
 </html>
