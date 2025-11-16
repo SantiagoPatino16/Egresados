@@ -1,0 +1,115 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainPage.master.cs" Inherits="Presentation.MainPage" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SISC - Pascual Bravo</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <!-- Main Css (para uso de toda la web) -->
+    <link href="css/Main.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <form id="form1" runat="server">
+        <!-- Navbar principal -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold text-primary" href="~/Home.aspx">SISC</a>
+
+                <!-- Botón hamburguesa móvil -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="~/Home.aspx">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Empleos.aspx">Empleos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Mensajes.aspx">Mensajes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Events/EventsLoad.aspx">Eventos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Forum/Publications.aspx">Foro</a>
+                        </li>
+                    </ul>
+
+                    <!-- Dropdown usuario -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <asp:Label ID="lblUsuario" runat="server" Text="Nombre Usuario"></asp:Label>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="../User/Profile.aspx">Perfil</a></li>
+                                <li><a class="dropdown-item" href="~/Configuracion.aspx">Configuración</a></li>
+                                <asp:PlaceHolder ID="phAdminLink" runat="server" Visible="false">
+                                    <li><a class="dropdown-item" href="../AdminControls/AdminControl.aspx">Administrador</a></li>
+                                </asp:PlaceHolder>
+                                <li>
+                                    <asp:LinkButton ID="lnkCerrarSesion" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">
+                                        Cerrar sesión
+                                    </asp:LinkButton>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="container mt-6">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Modal para mostrar mensajes -->
+        <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="modalMensajeLabel">
+                            <asp:Literal ID="litTituloModal" runat="server"></asp:Literal>
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Literal ID="litMensajeModal" runat="server"></asp:Literal>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <asp:Literal ID="litTextoBotonModal" runat="server"></asp:Literal>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+

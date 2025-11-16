@@ -1,0 +1,135 @@
+﻿/*  Colores institucionales */
+:root {
+    --color-azul-oscuro: #002a3f; /* Principal */
+    --color-cyan: #00b2c1; /* Acento */
+    --color-blanco: #ffffff; /* Fondo/base */
+}
+
+/*  Card principal */
+body .card {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 42, 63, 0.08) !important;
+    background-color: var(--color-blanco) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+.card:hover {
+    box-shadow: 0 10px 28px rgba(0, 42, 63, 0.18);
+    border-color: var(--color-cyan);
+}
+
+/*  Card header */
+.card-header, .card-header-custom {
+    background-color: var(--color-azul-oscuro);
+    color: var(--color-blanco);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    border-bottom: 3px solid var(--color-cyan);
+    padding: 1rem;
+}
+
+/*  Card-body */
+.card-body {
+    background-color: var(--color-blanco);
+    border-radius: 0 0 12px 12px;
+    padding: 1.5rem;
+}
+
+/*  Botón primario */
+.btn-primary {
+    background-color: var(--color-azul-oscuro);
+    border: none;
+    color: var(--color-blanco);
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+    .btn-primary:hover {
+        background-color: var(--color-cyan);
+        color: var(--color-blanco);
+        transform: translateY(-2px);
+    }
+
+    .btn-primary:focus, .btn-primary:active {
+        box-shadow: 0 0 0 0.25rem rgba(0, 178, 193, 0.35);
+        outline: none;
+    }
+
+/*  Botón de enlace */
+.btn-link {
+    color: var(--color-cyan);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+    .btn-link:hover {
+        color: var(--color-azul-oscuro);
+        text-decoration: underline;
+    }
+
+/*  Formulario */
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .form-control:focus {
+        border-color: var(--color-cyan);
+        box-shadow: 0 0 0 0.25rem rgba(0, 178, 193, 0.25);
+        outline: 0;
+    }
+
+/*  Comentarios anidados */
+.ml-4 {
+    margin-left: 2rem;
+}
+
+.border-left {
+    border-left: 3px solid var(--color-cyan);
+}
+
+/*  Responsive */
+@media (max-width: 768px) {
+    .card-header {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .ml-4 {
+        margin-left: 1rem;
+    }
+}
+
+
+/* Transiciones más suaves y uniformes */
+.transition-all {
+}
+
+/* Sombra institucional */
+.shadow-institucional {
+    box-shadow: 0 4px 12px rgba(0, 42, 63, 0.1);
+    border-radius: 0.5rem; /* esquinas redondeadas para suavizar */
+    background-color: #fff; /* asegura contraste */
+}
+
+    /* Efecto hover */
+    .shadow-institucional:hover {
+        box-shadow: 0 10px 28px rgba(0, 42, 63, 0.22);
+    }
+
+    /* Accesibilidad: también al enfocarse con teclado */
+    .shadow-institucional:focus-within {
+        outline: 2px solid #0077b6; /* color institucional */
+        outline-offset: 2px;
+    }
+

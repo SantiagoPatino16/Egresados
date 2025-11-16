@@ -1,0 +1,14 @@
+﻿body {
+    background-color: #ffffff;
+}
+
+#Image1 {
+    content: url("../Resources/bannerPascual.png");
+}
+
+cardLogin{
+
+}
+#txtLogin {
+    color: rgba(0, 29, 53);
+}
