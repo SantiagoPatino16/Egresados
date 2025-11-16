@@ -60,12 +60,6 @@ namespace Common.Entities
         //Relación a tabla de ofertas de empleo (si es empresa)
         public virtual ICollection<AttributesJobOfferts> OfertasEmpleo { get; set; }
 
-        //Mensajería 
-        public virtual ICollection<AttributesMessages> MensajesEnviados { get; set; }
-        public virtual ICollection<AttributesMessages> MensajesRecibidos { get; set; }
-        public virtual ICollection<AttributesMessageReactions> Reacciones { get; set; }
-
-
     }
 
 }
