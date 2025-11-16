@@ -98,6 +98,10 @@
     <Compile Include="Migrations\202511161541412_UpdateMensajeria.Designer.cs">
       <DependentUpon>202511161541412_UpdateMensajeria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202511161723570_CambiosMensajeria2.cs" />
+    <Compile Include="Migrations\202511161723570_CambiosMensajeria2.Designer.cs">
+      <DependentUpon>202511161723570_CambiosMensajeria2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ApplicationsRepository.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511161541412_UpdateMensajeria.resx">
       <DependentUpon>202511161541412_UpdateMensajeria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511161723570_CambiosMensajeria2.resx">
+      <DependentUpon>202511161723570_CambiosMensajeria2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

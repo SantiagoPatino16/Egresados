@@ -3,6 +3,7 @@ using DataAccess.Repository;
 using LogicBusiness.Security;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LogicBusiness.Service
 {
@@ -104,6 +105,13 @@ namespace LogicBusiness.Service
         public AttributesUser ObtenerUsuarioPorId(int id)
         {
             return _userRepository.ObtenerUsuarioPorId(id);
+        }
+
+        public List<AttributesUser> ObtenerUsuariosPorIds(List<int> ids)
+        {
+            return _userRepository.ObtenerUsuarios()
+                .Where(u => ids.Contains(u.IdUsuario))
+                .ToList();
         }
 
         // Actualizar

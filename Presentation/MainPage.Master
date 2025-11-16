@@ -40,7 +40,7 @@
                             <a class="nav-link" href="~/Empleos.aspx">Empleos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Mensajes.aspx">Mensajes</a>
+                            <a class="nav-link" href="./Messaging/Inbox.aspx">Mensajes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Events/EventsLoad.aspx">Eventos</a>
