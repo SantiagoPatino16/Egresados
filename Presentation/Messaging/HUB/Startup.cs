@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Presentation.Startup))]
-namespace Presentation
+[assembly: OwinStartup(typeof(Presentation.Messaging.HUB.Startup))]
+namespace Presentation.Messaging.HUB
 {
     public class Startup
     {

@@ -72,6 +72,8 @@
     <Compile Include="Service\CommentsService.cs" />
     <Compile Include="Service\ContractTypeService.cs" />
     <Compile Include="Service\EventsService.cs" />
+    <Compile Include="Service\FavoritesJobsService.cs" />
+    <Compile Include="Service\JobOffertsService.cs" />
     <Compile Include="Service\MessageAttachmentsService.cs" />
     <Compile Include="Service\MessageReactionsService.cs" />
     <Compile Include="Service\MessagesService.cs" />

@@ -106,6 +106,8 @@
     <Compile Include="Repository\CommentsRepository.cs" />
     <Compile Include="Repository\ContractTypeRepository.cs" />
     <Compile Include="Repository\EventsRepository.cs" />
+    <Compile Include="Repository\FavoritesJobsRepository.cs" />
+    <Compile Include="Repository\JobOffertsRepository.cs" />
     <Compile Include="Repository\MessageAttachmentsRepositoy.cs" />
     <Compile Include="Repository\MessageReactionsRepository.cs" />
     <Compile Include="Repository\MessagesRepository.cs" />
