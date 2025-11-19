@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="Eventos" Language="C#" MasterPageFile="~/MainPage.Master" AutoEventWireup="true" CodeBehind="EventsLoad.aspx.cs" Inherits="Presentation.Events.EventsLoad" %>
 
+<asp:Content ID="ContentHead" ContentPlaceHolderID="head" runat="server">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container mt-5">
@@ -57,9 +61,10 @@
                                 data-titulo='<%# Eval("Titulo") %>'
                                 data-descripcion='<%# Eval("Descripcion") %>'
                                 data-lugar='<%# Eval("Lugar") %>'
-                                data-fechainicio='<%# Eval("FechaInicio", "{0:dd/MM/yyyy}") %>'
-                                data-fechafin='<%# Eval("FechaFin") != DBNull.Value ? Eval("FechaFin", "{0:dd/MM/yyyy}") : "" %>'
+                                data-fechainicio='<%# Eval("FechaInicio", "{0:dd/MM/yyyy HH:mm}") %>'
+                                data-fechafin='<%# Eval("FechaFin") != DBNull.Value ? Eval("FechaFin", "{0:dd/MM/yyyy HH:mm}") : "" %>'
                                 data-organizador='<%# Eval("Organizador") %>'
+                                data-tipo='<%# Eval("Tipo") %>'
                                 data-imagen='<%# Eval("RutaImagen") %>'
                                 onclick="cargarDetallesEvento(this)">Ver detalles
                             </a>
@@ -78,22 +83,52 @@
     <div class="modal fade" id="detalleEventoModal" tabindex="-1" aria-labelledby="detalleEventoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="detalleEventoLabel">Detalles del Evento</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <div class="modal-header text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <h5 class="modal-title fw-bold" id="detalleEventoLabel">
+                        <i class="bi bi-calendar-event me-2"></i>Detalles del Evento
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <div class="text-center mb-3">
-                        <img id="imgEventoModal" src="~/Resources/events/default.png" alt="Imagen evento" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+                        <img id="imgEventoModal" src="~/Resources/events/default.png" alt="Imagen evento" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
                     </div>
-                    <h4 id="tituloEventoModal" class="fw-bold"></h4>
-                    <p id="descripcionEventoModal"></p>
-                    <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i><span id="lugarEventoModal"></span></p>
-                    <p class="text-muted"><i class="bi bi-calendar-event"></i><span id="fechaEventoModal"></span></p>
-                    <p class="text-muted"><i class="bi bi-person"></i>Organizador: <span id="organizadorEventoModal"></span></p>
+                    <h4 id="tituloEventoModal" class="fw-bold text-primary mb-3"></h4>
+                    <p id="descripcionEventoModal" class="text-secondary"></p>
+                    
+                    <hr>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <p class="mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-2"></i>
+                                <strong>Lugar:</strong> <span id="lugarEventoModal"></span>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2">
+                                <i class="bi bi-tag-fill text-info me-2"></i>
+                                <strong>Tipo:</strong> <span id="tipoEventoModal"></span>
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class="mb-2">
+                                <i class="bi bi-calendar3 text-success me-2"></i>
+                                <strong>Fecha:</strong> <span id="fechaEventoModal"></span>
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class="mb-0">
+                                <i class="bi bi-person-fill text-warning me-2"></i>
+                                <strong>Organizador:</strong> <span id="organizadorEventoModal"></span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cerrar
+                    </button>
                 </div>
             </div>
         </div>

@@ -135,6 +135,7 @@
     <Content Include="Events\EventsLoad.aspx" />
     <Content Include="Forum\Publications.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Inicio\Home.aspx" />
     <Content Include="Messaging\Inbox.aspx" />
     <Content Include="Resources\bannerPascual.png" />
     <Content Include="Resources\perfiles\default.png" />
@@ -192,6 +193,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage.Master.cs">
       <DependentUpon>MainPage.Master</DependentUpon>

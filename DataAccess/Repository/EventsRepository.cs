@@ -77,12 +77,17 @@ namespace DataAccess.Repository
                 .ToList();
         }
 
-        // Obtener próximos eventos
+        // Obtener próximos eventos (ordenados por cercanía)
         public List<AttributesEvents> ObtenerProximos()
         {
+            var ahora = DateTime.Now;
+            
             return _context.Eventos
-                .Where(e => e.Activo && e.FechaInicio >= DateTime.Now)
-                .OrderBy(e => e.FechaInicio)
+                .Where(e => e.Activo && 
+                           (e.FechaInicio >= ahora || // Eventos que aún no han comenzado
+                           (e.FechaFin.HasValue && e.FechaFin.Value >= ahora))) // O eventos en curso
+                .OrderBy(e => e.FechaInicio) // Primero los más próximos
+                .ThenByDescending(e => e.FechaCreacion) // Luego los más recientes
                 .ToList();
         }
 

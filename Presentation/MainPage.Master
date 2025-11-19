@@ -22,7 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand fw-bold text-primary" href="~/Home.aspx">SISC</a>
+                <a class="navbar-brand fw-bold text-primary" href="../Inicio/Home.aspx">SISC</a>
 
                 <!-- Botón hamburguesa móvil -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="~/Home.aspx">Inicio</a>
+                            <a class="nav-link active" href="../Inicio/Home.aspx">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="~/Empleos.aspx">Empleos</a>
