@@ -9,12 +9,16 @@
         </div>
 
         <!-- Lista de conversaciones o usuarios -->
+        <div class="inbox-header mb-3">
+            <asp:Button ID="btnNuevoChat" runat="server" Text="Nuevo Chat" CssClass="btn btn-success" OnClick="btnNuevoChat_Click" />
+        </div>
+
         <div class="inbox-list">
             <asp:Repeater ID="rptUsuarios" runat="server">
                 <ItemTemplate>
-                    <div class="inbox-user p-2 border mb-1" data-userid='<%# Eval("IdUsuario") %>' 
-                         onclick="abrirConversacion(<%# Eval("IdUsuario") %>, '<%# Eval("NombreCompleto") %>')">
-                        <%# Eval("NombreCompleto") %>
+                    <div class="inbox-user p-2 border mb-1" data-userid='<%# Eval("IdUsuario") %>'
+                        onclick="abrirConversacion(<%# Eval("IdUsuario") %>, '<%# Eval("Nombre") %>')">
+                        <%# Eval("Nombre") %>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
@@ -23,8 +27,7 @@
 
     <script type="text/javascript">
         function abrirConversacion(idUsuario, nombre) {
-            // Aquí puedes abrir la ventana de chat o cargar los mensajes vía AJAX/SignalR
-            alert('Abrir conversación con: ' + nombre + ' (ID ' + idUsuario + ')');
+            window.location.href = 'Chat.aspx?usuarioId=' + idUsuario;
         }
     </script>
 </asp:Content>

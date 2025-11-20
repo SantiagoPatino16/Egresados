@@ -11,43 +11,34 @@ namespace Presentation.Messaging
 {
 
 
-    public partial class Inbox
+    public partial class Chat
     {
 
         /// <summary>
-        /// Control txtBuscarUsuario.
+        /// Control rptMensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarUsuario;
+        protected global::System.Web.UI.WebControls.Repeater rptMensajes;
 
         /// <summary>
-        /// Control btnBuscar.
+        /// Control txtMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.TextBox txtMensaje;
 
         /// <summary>
-        /// Control btnNuevoChat.
+        /// Control btnEnviarMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevoChat;
-
-        /// <summary>
-        /// Control rptUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUsuarios;
+        protected global::System.Web.UI.WebControls.Button btnEnviarMensaje;
     }
 }

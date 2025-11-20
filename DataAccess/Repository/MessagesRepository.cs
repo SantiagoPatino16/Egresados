@@ -24,6 +24,8 @@ namespace DataAccess.Repository
             using (var context = new RSContext())
             {
                 return context.Mensajes
+                    .Include("Emisor")
+                    .Include("Receptor")
                     .Where(m =>
                         (m.IdEmisor == idUsuario1 && m.IdReceptor == idUsuario2 && !m.EliminadoPorEmisor) ||
                         (m.IdEmisor == idUsuario2 && m.IdReceptor == idUsuario1 && !m.EliminadoPorReceptor))

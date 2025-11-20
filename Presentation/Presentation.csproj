@@ -135,7 +135,10 @@
     <Content Include="Events\EventsLoad.aspx" />
     <Content Include="Forum\Publications.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Messaging\Chat.aspx" />
+    <Content Include="Messaging\HUB\chat.js" />
     <Content Include="Messaging\Inbox.aspx" />
+    <Content Include="Messaging\NewChat.aspx" />
     <Content Include="Resources\bannerPascual.png" />
     <Content Include="Resources\perfiles\default.png" />
     <Content Include="Scripts\jquery.signalR-2.4.3.js" />
@@ -200,6 +203,13 @@
     <Compile Include="MainPage.Master.designer.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Messaging\Chat.aspx.cs">
+      <DependentUpon>Chat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messaging\Chat.aspx.designer.cs">
+      <DependentUpon>Chat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Messaging\HUB\ChatHub.cs" />
     <Compile Include="Messaging\HUB\Startup.cs" />
     <Compile Include="Messaging\Inbox.aspx.cs">
@@ -208,6 +218,13 @@
     </Compile>
     <Compile Include="Messaging\Inbox.aspx.designer.cs">
       <DependentUpon>Inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\NewChat.aspx.cs">
+      <DependentUpon>NewChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messaging\NewChat.aspx.designer.cs">
+      <DependentUpon>NewChat.aspx</DependentUpon>
     </Compile>
     <Compile Include="Start\RegisterCompany.aspx.cs">
       <DependentUpon>RegisterCompany.aspx</DependentUpon>
