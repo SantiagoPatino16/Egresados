@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand fw-bold text-primary" href="~/Home.aspx">SISC</a>
+                <a class="navbar-brand fw-bold text-primary" href="../Inicio/Home.aspx">SISC</a>
 
                 <!-- Botón hamburguesa móvil -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -36,10 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="~/Home.aspx">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Empleos.aspx">Empleos</a>
+                            <a class="nav-link active" href="../Inicio/Home.aspx">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./Messaging/Inbox.aspx">Mensajes</a>
@@ -80,7 +77,6 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="../User/Profile.aspx">Perfil</a></li>
-                                <li><a class="dropdown-item" href="~/Configuracion.aspx">Configuración</a></li>
                                 <li><button id="btnToggleTheme" type="button" class="dropdown-item">Modo Oscuro</button></li>
                                      <asp:PlaceHolder ID="phAdminLink" runat="server" Visible="false">
                                         <li><a class="dropdown-item" href="../AdminControls/AdminControl.aspx">Administrador</a></li>

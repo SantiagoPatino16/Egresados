@@ -210,5 +210,20 @@ namespace DataAccess.Repository
             }
         }
 
+        // Obtener usuarios aleatorios para sugerencias (excluyendo al usuario actual)
+        public List<AttributesUser> ObtenerUsuariosAleatorios(int idUsuarioActual, int cantidad = 4)
+        {
+            using (var context = new RSContext())
+            {
+                return context.Usuarios
+                    .Where(u => u.Activo && 
+                               u.IdUsuario != idUsuarioActual &&
+                               (u.Rol == "Empresa" || u.Rol == "Egresado" || u.Rol == "Estudiante"))
+                    .OrderBy(u => Guid.NewGuid()) // Orden aleatorio
+                    .Take(cantidad)
+                    .ToList();
+            }
+        }
+
     }
 }

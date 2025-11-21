@@ -62,10 +62,24 @@ namespace Presentation.Events
                     document.getElementById('tituloEventoModal').innerText = btn.getAttribute('data-titulo');
                     document.getElementById('descripcionEventoModal').innerText = btn.getAttribute('data-descripcion');
                     document.getElementById('lugarEventoModal').innerText = btn.getAttribute('data-lugar');
-                    document.getElementById('fechaEventoModal').innerText = btn.getAttribute('data-fechainicio') + 
-                        (btn.getAttribute('data-fechafin') ? ' - ' + btn.getAttribute('data-fechafin') : '');
+                    
+                    var fechaInicio = btn.getAttribute('data-fechainicio');
+                    var fechaFin = btn.getAttribute('data-fechafin');
+                    var fechaTexto = fechaInicio;
+                    if (fechaFin) {
+                        fechaTexto += ' - ' + fechaFin;
+                    }
+                    document.getElementById('fechaEventoModal').innerText = fechaTexto;
+                    
                     document.getElementById('organizadorEventoModal').innerText = btn.getAttribute('data-organizador');
-                    document.getElementById('imgEventoModal').src = btn.getAttribute('data-imagen');
+                    document.getElementById('tipoEventoModal').innerText = btn.getAttribute('data-tipo') || 'Evento';
+                    
+                    var imagen = btn.getAttribute('data-imagen');
+                    if (imagen && imagen.trim() !== '') {
+                        document.getElementById('imgEventoModal').src = imagen;
+                    } else {
+                        document.getElementById('imgEventoModal').src = '~/Resources/events/default.png';
+                    }
                 }";
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ModalEventoScript", script, true);

@@ -56,7 +56,7 @@ namespace Presentation
                     return;
                 }
 
-                Response.Redirect("../Forum/Publications.aspx");
+                Response.Redirect("../inicio/Home.aspx");
             }
 
             else

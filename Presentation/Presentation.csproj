@@ -138,6 +138,7 @@
     <Content Include="JobBoardList\EmploymentDetail.aspx" />
     <Content Include="JobBoardList\FavoritesJobs.aspx" />
     <Content Include="JobBoardList\JobApplicants.aspx" />
+    <Content Include="Inicio\Home.aspx" />
     <Content Include="Messaging\Inbox.aspx" />
     <Content Include="Resources\bannerPascual.png" />
     <Content Include="Resources\perfiles\default.png" />
@@ -245,6 +246,13 @@
     </Compile>
     <Compile Include="JobBoardList\JobApplicants.aspx.designer.cs">
       <DependentUpon>JobApplicants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage.Master.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
