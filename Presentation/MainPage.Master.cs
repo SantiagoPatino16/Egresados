@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Presentation.CreateOffer;
+using System;
 using System.Web.UI;
 
 namespace Presentation
@@ -7,46 +8,51 @@ namespace Presentation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                AsignarNombreUsuario();
-                MostrarEnlaceAdministrador();
-            }
+            // Mostrar nombre de usuario y enlaces según rol
+            AsignarNombreUsuario();
+            MostrarEnlacesSegunRol();
         }
 
-        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Session.Clear();      // Limpia todos los valores de la sesión
-            Session.Abandon();
-            Response.Redirect("~/Start/Login.aspx"); // Redirige a la página de login
-        }
-
+        /// <summary>
+        /// Asigna el nombre del usuario al label del dropdown
+        /// </summary>
         private void AsignarNombreUsuario()
         {
-            if (Session["NombreCompleto"] != null)
-            {
-                lblUsuario.Text = Session["NombreCompleto"].ToString();
-            }
-            else
-            {
-                lblUsuario.Text = "Invitado";
-            }
+            lblUsuario.Text = (Session["NombreCompleto"] as string) ?? "Invitado";
         }
 
-        private void MostrarEnlaceAdministrador()
+        /// <summary>
+        /// Muestra u oculta enlaces según el rol del usuario
+        /// </summary>
+        private void MostrarEnlacesSegunRol()
         {
-            string rol = Session["Rol"] as string;
+            string rol = (Session["Rol"] as string)?.Trim() ?? string.Empty;
 
-            if (!string.IsNullOrEmpty(rol) && rol.Equals("Administrador", StringComparison.OrdinalIgnoreCase))
-            {
-                phAdminLink.Visible = true;
-            }
-            else
-            {
-                phAdminLink.Visible = false;
-            }
+            //visible para Egresados
+            phBolsaEmpleo.Visible = rol.Equals("Egresado", StringComparison.OrdinalIgnoreCase);
+            phEgresadooLink.Visible = rol.Equals("Egresado", StringComparison.OrdinalIgnoreCase);
+
+            //solo visible para Empresa
+            phJobApplicants.Visible = rol.Equals("Empresa", StringComparison.OrdinalIgnoreCase);
+            phEmploymentCreate.Visible = rol.Equals("Empresa", StringComparison.OrdinalIgnoreCase);
+
+            //visible para Administradores
+            phAdminLink.Visible = rol.Equals("Administrador", StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Cierra sesión y redirige al login
+        /// </summary>
+        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Start/Login.aspx");
+        }
+
+        /// <summary>
+        /// Muestra un modal simple
+        /// </summary>
         public void MostrarModal(string titulo, string mensaje, string textoBoton = "Cerrar")
         {
             litTituloModal.Text = titulo;
@@ -54,14 +60,17 @@ namespace Presentation
             litTextoBotonModal.Text = textoBoton;
 
             string script = @"
-        var modal = document.getElementById('modalMensaje');
-        modal.removeAttribute('data-url');
-        var bsModal = new bootstrap.Modal(modal);
-        bsModal.show();";
+                var modal = document.getElementById('modalMensaje');
+                modal.removeAttribute('data-url');
+                var bsModal = new bootstrap.Modal(modal);
+                bsModal.show();";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", script, true);
         }
 
+        /// <summary>
+        /// Muestra un modal y redirige al cerrar
+        /// </summary>
         public void MostrarModalRedireccion(string titulo, string mensaje, string urlRedireccion, string textoBoton = "Continuar")
         {
             litTituloModal.Text = titulo;
@@ -69,21 +78,19 @@ namespace Presentation
             litTextoBotonModal.Text = textoBoton;
 
             string script = $@"
-        var modal = document.getElementById('modalMensaje');
-        modal.setAttribute('data-url', '{urlRedireccion}');
-        var bsModal = new bootstrap.Modal(modal);
-        bsModal.show();
+                var modal = document.getElementById('modalMensaje');
+                modal.setAttribute('data-url', '{urlRedireccion}');
+                var bsModal = new bootstrap.Modal(modal);
+                bsModal.show();
 
-        var btnCerrar = modal.querySelector('.btn[data-bs-dismiss=""modal""]');
-        if (btnCerrar) {{
-            btnCerrar.addEventListener('click', function() {{
-                window.location.href = '{urlRedireccion}';
-            }});
-        }}";
+                var btnCerrar = modal.querySelector('.btn[data-bs-dismiss=""modal""]');
+                if (btnCerrar) {{
+                    btnCerrar.addEventListener('click', function() {{
+                        window.location.href = '{urlRedireccion}';
+                    }});
+                }}";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalRedirect", script, true);
         }
-
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Common.Attributes;
 using DataAccess.ConnectionDB;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace DataAccess.Repository
@@ -14,26 +15,28 @@ namespace DataAccess.Repository
             _context = new RSContext();
         }
 
-        // Listar todas las postulaciones
         public List<AttributesApplications> ListarTodas()
         {
-            return _context.Postulaciones.ToList();
+            return _context.Postulaciones
+                .Include(p => p.Egresado)
+                .Include(p => p.OfertaEmpleo)
+                .ToList();
         }
 
-        // Obtener postulacion por Id
         public AttributesApplications ObtenerPorId(int id)
         {
-            return _context.Postulaciones.FirstOrDefault(p => p.IdPostulacion == id);
+            return _context.Postulaciones
+                .Include(p => p.Egresado)
+                .Include(p => p.OfertaEmpleo)
+                .FirstOrDefault(p => p.IdPostulacion == id);
         }
 
-        // Agregar nueva postulacion
         public void Agregar(AttributesApplications postulacion)
         {
             _context.Postulaciones.Add(postulacion);
             _context.SaveChanges();
         }
 
-        // Eliminar postulacion
         public void Eliminar(int id)
         {
             var postulacion = _context.Postulaciones.Find(id);
@@ -44,7 +47,6 @@ namespace DataAccess.Repository
             }
         }
 
-        // Actualizar postulacion
         public void Actualizar(AttributesApplications postulacion)
         {
             var existente = _context.Postulaciones.Find(postulacion.IdPostulacion);
@@ -60,5 +62,15 @@ namespace DataAccess.Repository
                 _context.SaveChanges();
             }
         }
+        public List<AttributesApplications> ListarPorEmpresa(int idEmpresa)
+        {
+            return _context.Postulaciones
+                .Include(p => p.Egresado)
+                .Include(p => p.OfertaEmpleo)
+                .Include(p => p.OfertaEmpleo.Empresa)  // 🔥 necesario para que cargue IdEmpresa
+                .Where(p => p.OfertaEmpleo.IdEmpresa == idEmpresa)
+                .ToList();
+        }
+
     }
 }

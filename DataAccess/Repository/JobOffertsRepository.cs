@@ -67,5 +67,21 @@ namespace DataAccess.Repository
                 _context.SaveChanges();
             }
         }
+
+        public List<AttributesCategoriesJobs> ListarCategorias()
+        {
+            return _context.CategoriasEmpleo.ToList();
+        }
+
+        public List<AttributesWorkModalities> ListarModalidades()
+        {
+            return _context.ModalidadesTrabajo.ToList();
+        }
+
+        public List<AttributesContractType> ListarTiposContrato()
+        {
+            return _context.TiposContrato.ToList();
+        }
+
     }
 }

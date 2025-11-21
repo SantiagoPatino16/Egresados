@@ -7,128 +7,101 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentation
+namespace Presentation.JobBoardList
 {
 
 
-    public partial class MainPage
+    public partial class EmploymentDetail
     {
 
         /// <summary>
-        /// Control head.
+        /// Control pnlDetalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Panel pnlDetalle;
 
         /// <summary>
-        /// Control form1.
+        /// Control litTitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Literal litTitulo;
 
         /// <summary>
-        /// Control phBolsaEmpleo.
+        /// Control litDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phBolsaEmpleo;
+        protected global::System.Web.UI.WebControls.Literal litDescripcion;
 
         /// <summary>
-        /// Control phJobApplicants.
+        /// Control litRequisitos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phJobApplicants;
+        protected global::System.Web.UI.WebControls.Literal litRequisitos;
 
         /// <summary>
-        /// Control phEmploymentCreate.
+        /// Control litCiudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phEmploymentCreate;
+        protected global::System.Web.UI.WebControls.Literal litCiudad;
 
         /// <summary>
-        /// Control lblUsuario.
+        /// Control litSalario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuario;
+        protected global::System.Web.UI.WebControls.Literal litSalario;
 
         /// <summary>
-        /// Control phAdminLink.
+        /// Control litFechaPublicacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phAdminLink;
+        protected global::System.Web.UI.WebControls.Literal litFechaPublicacion;
 
         /// <summary>
-        /// Control phEgresadooLink.
+        /// Control litFechaCierre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phEgresadooLink;
+        protected global::System.Web.UI.WebControls.Literal litFechaCierre;
 
         /// <summary>
-        /// Control lnkCerrarSesion.
+        /// Control litEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCerrarSesion;
+        protected global::System.Web.UI.WebControls.Literal litEstado;
 
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control pnlError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-
-        /// <summary>
-        /// Control litTituloModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTituloModal;
-
-        /// <summary>
-        /// Control litMensajeModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litMensajeModal;
-
-        /// <summary>
-        /// Control litTextoBotonModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTextoBotonModal;
+        protected global::System.Web.UI.WebControls.Panel pnlError;
     }
 }
