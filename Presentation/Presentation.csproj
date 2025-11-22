@@ -135,8 +135,12 @@
     <Content Include="Events\EventsLoad.aspx" />
     <Content Include="Forum\Publications.aspx" />
     <Content Include="Global.asax" />
+<<<<<<< HEAD
     <Content Include="Messaging\Chat.aspx" />
     <Content Include="Messaging\HUB\chat.js" />
+=======
+    <Content Include="Inicio\Home.aspx" />
+>>>>>>> 9cbd18f4b9cbcf9695972407f2dbf8302d96a190
     <Content Include="Messaging\Inbox.aspx" />
     <Content Include="Messaging\NewChat.aspx" />
     <Content Include="Resources\bannerPascual.png" />
@@ -195,6 +199,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage.Master.cs">
       <DependentUpon>MainPage.Master</DependentUpon>

@@ -172,6 +172,12 @@ namespace LogicBusiness.Service
             return _userRepository.ActualizarUsuario(usuario);
         }
 
+        // Obtener usuarios aleatorios para sugerencias
+        public List<AttributesUser> ObtenerUsuariosAleatorios(int idUsuarioActual, int cantidad = 10)
+        {
+            return _userRepository.ObtenerUsuariosAleatorios(idUsuarioActual, cantidad);
+        }
+
 
     }
 }

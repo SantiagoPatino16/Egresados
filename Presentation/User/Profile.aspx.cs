@@ -25,13 +25,41 @@ namespace Presentation
         {
             try
             {
-                int idUsuario = Convert.ToInt32(Session["IdUsuario"]);
+                // Verificar si se está viendo el perfil de otro usuario
+                int idUsuario;
+                bool esPerfilPropio = true;
+                
+                if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int idOtroUsuario))
+                {
+                    // Ver perfil de otro usuario
+                    idUsuario = idOtroUsuario;
+                    esPerfilPropio = false;
+                }
+                else
+                {
+                    // Ver perfil propio
+                    if (Session["IdUsuario"] == null)
+                    {
+                        Response.Redirect("~/Start/Login.aspx");
+                        return;
+                    }
+                    idUsuario = Convert.ToInt32(Session["IdUsuario"]);
+                }
+                
                 var usuario = _userService.ObtenerUsuarioPorId(idUsuario);
 
                 if (usuario == null)
                 {
                     MasterPage.MostrarModal("Error", "No se encontró el usuario.", "Aceptar");
                     return;
+                }
+                
+                // Ocultar botones de edición si no es el perfil propio
+                if (!esPerfilPropio)
+                {
+                    btnEditarPerfil.Visible = false;
+                    btnCambiarFoto.Visible = false;
+                    fuFotoPerfil.Visible = false;
                 }
 
                 // Información principal
