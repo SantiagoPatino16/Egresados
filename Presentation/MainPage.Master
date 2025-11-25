@@ -49,11 +49,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Messaging/Inbox.aspx">Mensajes</a>
-                            <a class="nav-link" href="../JobBoardList/EmploymentAvailable.aspx">Empleos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Messaging/Inbox.aspx">Mensajes</a>
-
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Events/EventsLoad.aspx">Eventos</a>
@@ -61,25 +56,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../Forum/Publications.aspx">Foro</a>
                         </li>
-
-                        <!-- Bolsa de Empleo no la ve la empresa -->
-                        <asp:PlaceHolder ID="phBolsaEmpleo" runat="server" Visible="false">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/JobBoardList/EmploymentAvailable.aspx">Bolsa de Empleo</a>
-                            </li>
-                        </asp:PlaceHolder>
-
-                        <!-- solo visible para empresas -->
-                        <asp:PlaceHolder ID="phJobApplicants" runat="server" Visible="false">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/JobBoardList/JobApplicants.aspx">Postulantes</a>
-                            </li>
-                        </asp:PlaceHolder>
-                        <asp:PlaceHolder ID="phEmploymentCreate" runat="server" Visible="false">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../CreateOffer/EmploymentCreate.aspx">Crear Oferta de Empleo</a>
-                            </li>
-                        </asp:PlaceHolder>
 
 
                         <!-- Bolsa de Empleo no la ve la empresa -->
@@ -111,15 +87,6 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="../User/Profile.aspx">Perfil</a></li>
-                                <li><button id="btnToggleTheme" type="button" class="dropdown-item">Modo Oscuro</button></li>
-                                     <asp:PlaceHolder ID="phAdminLink" runat="server" Visible="false">
-                                        <li><a class="dropdown-item" href="../AdminControls/AdminControl.aspx">Administrador</a></li>
-                                        <li><a class="dropdown-item" href="../AdminControls/AdminJobOffers.aspx">Validar Ofertas</a></li>
-                                    </asp:PlaceHolder>
-                                    <asp:PlaceHolder ID="phEgresadooLink" runat="server" Visible="false">
-                                        <li><a class="dropdown-item" href="/JobBoardList/FavoritesJobs.aspx">Favoritos</a></li>
-                                    </asp:PlaceHolder>
-
                                 <asp:PlaceHolder ID="phAdminLink" runat="server" Visible="false">
                                     <li><a class="dropdown-item" href="../AdminControls/AdminControl.aspx">Administrador</a></li>
                                     <li><a class="dropdown-item" href="../AdminControls/AdminJobOffers.aspx">Validar Ofertas</a></li>
@@ -201,3 +168,5 @@
     </form>
 </body>
 </html>
+
+
