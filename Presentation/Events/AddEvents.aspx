@@ -71,12 +71,6 @@
                         <small class="text-muted">Formatos permitidos: .jpg, .jpeg, .png (máx. 2MB)</small>
                     </div>
 
-                    <!-- Estado -->
-                    <div class="form-check form-switch mb-4">
-                        <asp:CheckBox ID="chkActivo" runat="server" CssClass="form-check-input" Checked="true" />
-                        <label class="form-check-label fw-semibold" for="chkActivo">Evento activo</label>
-                    </div>
-
                     <div class="text-center mt-4">
                         <asp:Button ID="btnGuardar" runat="server" Text="Guardar Evento" CssClass="btn btn-success px-4 py-2 rounded-pill shadow-sm" OnClick="btnGuardar_Click" />
                     </div>

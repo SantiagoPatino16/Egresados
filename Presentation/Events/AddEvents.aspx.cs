@@ -59,7 +59,6 @@ namespace Presentation.Events
                 Lugar = txtLugar.Text.Trim(),
                 Tipo = ddlTipo.SelectedValue,
                 Organizador = txtOrganizador.Text.Trim(),
-                Activo = chkActivo.Checked
             };
         }
 
@@ -95,7 +94,6 @@ namespace Presentation.Events
             txtLugar.Text = string.Empty;
             ddlTipo.SelectedIndex = 0;
             txtOrganizador.Text = string.Empty;
-            chkActivo.Checked = true;
         }
 
         private void GuardarEventoBD(AttributesEvents evento)
