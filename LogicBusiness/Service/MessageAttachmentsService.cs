@@ -15,10 +15,23 @@ namespace LogicBusiness.Service
         {
             _messageAttachmentsRepository = new MessageAttachmentsRepositoy();
         }
-        public int InsertarAdjunto(AttributesMessageAttachments adjunto)
+        public int InsertarAdjunto(int idEmisor, int idReceptor, string rutaArchivo, string mimeType)
         {
-            return _messageAttachmentsRepository.InsertarAdjunto(adjunto);
+            if (idEmisor <= 0) throw new ArgumentException("IdEmisor inválido");
+            if (idReceptor <= 0) throw new ArgumentException("IdReceptor inválido");
+            if (string.IsNullOrWhiteSpace(rutaArchivo)) throw new ArgumentException("RutaArchivo requerida");
+            if (string.IsNullOrWhiteSpace(mimeType)) throw new ArgumentException("TipoMime requerido");
+
+            return _messageAttachmentsRepository.InsertarAdjunto(
+                idEmisor,
+                idReceptor,
+                rutaArchivo,
+                mimeType
+            );
         }
+
+
+
         public List<AttributesMessageAttachments> ObtenerAdjuntos(int idMensaje)
         {
             return _messageAttachmentsRepository.ObtenerAdjuntos(idMensaje);

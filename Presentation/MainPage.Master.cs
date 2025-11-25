@@ -21,9 +21,12 @@ namespace Presentation
             lblUsuario.Text = (Session["NombreCompleto"] as string) ?? "Invitado";
         }
 
+<<<<<<< HEAD
+=======
         /// <summary>
         /// Muestra u oculta enlaces según el rol del usuario
         /// </summary>
+>>>>>>> 29a5a9187e03f00205a27a29bbc54015c4b253d4
         private void MostrarEnlacesSegunRol()
         {
             string rol = (Session["Rol"] as string)?.Trim() ?? string.Empty;
@@ -38,6 +41,16 @@ namespace Presentation
 
             //visible para Administradores
             phAdminLink.Visible = rol.Equals("Administrador", StringComparison.OrdinalIgnoreCase);
+<<<<<<< HEAD
+        }
+
+        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Start/Login.aspx");
+=======
+>>>>>>> 29a5a9187e03f00205a27a29bbc54015c4b253d4
         }
 
         /// <summary>

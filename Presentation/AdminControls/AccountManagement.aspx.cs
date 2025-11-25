@@ -21,7 +21,7 @@ namespace Presentation.AdminControls
 
         private void CargarCuentas()
         {
-            var datos = userService.ObtenerUsuarios(); // Reemplaza con tu fuente de datos
+            var datos = userService.ObtenerUsuarios();
 
             // Filtro por tipo
             if (!string.IsNullOrEmpty(ddlRol.SelectedValue))

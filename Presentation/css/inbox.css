@@ -1,0 +1,63 @@
+﻿:root {
+    --color-azul-oscuro: #002a3f; /* Principal */
+    --color-cyan: #00b2c1; /* Acento */
+    --color-blanco: #ffffff; /* Base */
+}
+
+
+/* ----------  Contenedor general  ---------- */
+.inbox-container {
+    max-width: 420px;
+    margin: 0 auto;
+    height: 100vh; /* ocupar pantalla completa en móvil */
+    background: var(--color-blanco);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+    /* ----------  Header / buscador  ---------- */
+    .inbox-container .bg-white {
+        background: var(--color-blanco) !important;
+    }
+
+    .inbox-container .border-bottom {
+        border-color: var(--color-cyan) !important;
+    }
+
+    /* ----------  Botones  ---------- */
+    .inbox-container .btn-primary {
+        background: var(--color-azul-oscuro);
+        border-color: var(--color-azul-oscuro);
+    }
+
+        .inbox-container .btn-primary:hover {
+            background: #001a29; /* un tono más oscuro */
+            border-color: #001a29;
+        }
+
+    .inbox-container .btn-success {
+        background: var(--color-cyan);
+        border-color: var(--color-cyan);
+    }
+
+        .inbox-container .btn-success:hover {
+            background: #009da9;
+            border-color: #009da9;
+        }
+
+/* ----------  Avatar placeholder  ---------- */
+.inbox-user .bg-gradient {
+    background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-azul-oscuro) 100%);
+}
+
+/* ----------  Badge “en línea”  ---------- */
+.inbox-user .badge {
+    background: var(--color-cyan) !important;
+}
+
+/* ----------  Hover sobre fila  ---------- */
+.inbox-user:hover {
+    background: rgba(0, 178, 193, .08);
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+

@@ -32,15 +32,23 @@ namespace DataAccess.Repository
         }
 
         // Leer todos (solo activos)
-        public List<AttributesUser> ObtenerUsuarios()
+        public List<AttributesUser> ObtenerUsuarios(string filtro = "")
         {
             using (var context = new RSContext())
             {
-                return context.Usuarios
-                             .Where(u => u.Activo)
-                             .ToList();
+                var query = context.Usuarios
+                    .Where(u => u.Activo);
+
+                if (!string.IsNullOrEmpty(filtro))
+                {
+                    // EF maneja Comparisons si lo pasas así
+                    query = query.Where(u => u.Nombre.Contains(filtro));
+                }
+
+                return query.ToList();
             }
         }
+
 
         // Leer por Id
         public AttributesUser ObtenerUsuarioPorId(int id)

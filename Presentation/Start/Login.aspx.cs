@@ -56,7 +56,12 @@ namespace Presentation
                     return;
                 }
 
+<<<<<<< HEAD
+                // Redirigir a publicaciones
+                Response.Redirect("../Inicio/Home.aspx");
+=======
                 Response.Redirect("../inicio/Home.aspx");
+>>>>>>> 29a5a9187e03f00205a27a29bbc54015c4b253d4
             }
 
             else
