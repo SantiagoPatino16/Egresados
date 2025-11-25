@@ -1,0 +1,82 @@
+﻿/* ----------  Paleta Messenger  ---------- */
+:root {
+    --msg-out-bg: #0084ff; /* azul clásico Messenger */
+    --msg-out-text: #ffffff;
+    --msg-in-bg: #f1f0f0; /* gris claro
+    --msg-in-text:        #050505;
+    --check-active:       #0084ff;   /* doble check azul */
+    --check-pending: #8a8d91; /* doble check gris */
+    --input-bg: #ffffff;
+    --input-border: #ced0d4;
+    --send-btn-bg: #0084ff;
+    --send-btn-hover: #0069d9;
+    --scroll-thumb: #bcc0c4;
+}
+
+/* ----------  Fondo ventana  ---------- */
+#chatWindow {
+    background: #ffffff;
+}
+
+/* ----------  Burbujas  ---------- */
+.msg-out {
+    background: var(--msg-out-bg);
+    color: var(--msg-out-text);
+    border-bottom-right-radius: 4px !important;
+    max-width: 75%;
+}
+
+.msg-in {
+    background: var(--msg-in-bg);
+    color: var(--msg-in-text);
+    border-bottom-left-radius: 4px !important;
+    max-width: 75%;
+}
+
+/* ----------  Doble check  ---------- */
+.small .bi-check-all::before {
+    color: var(--check-pending); /* gris por defecto */
+}
+
+.small.leido .bi-check-all::before {
+    color: var(--check-active); /* azul cuando esté leído */
+}
+
+/* ----------  Input  ---------- */
+#txtMensaje {
+    border: 1px solid var(--input-border);
+    border-radius: 1.25rem 0 0 1.25rem; /* redondo a la izq. */
+    padding: .55rem 1rem;
+}
+
+    #txtMensaje:focus {
+        border-color: var(--send-btn-bg);
+        box-shadow: 0 0 0 .20rem rgba(0,132,255,.25);
+    }
+
+/* ----------  Botón enviar (solo icono redondo)  ---------- */
+#btnEnviar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--send-btn-bg);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -1px; /* junta con input */
+}
+
+    #btnEnviar:hover {
+        background: var(--send-btn-hover);
+    }
+
+/* ----------  Scroll fino  ---------- */
+#chatWindow::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatWindow::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 3px;
+}

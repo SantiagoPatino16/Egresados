@@ -15,30 +15,39 @@ namespace Presentation.Messaging
     {
 
         /// <summary>
-        /// Control rptMensajes.
+        /// Control hfUsuarioActual.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptMensajes;
+        protected global::System.Web.UI.WebControls.HiddenField hfUsuarioActual;
 
         /// <summary>
-        /// Control txtMensaje.
+        /// Control hfUsuarioDestino.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMensaje;
+        protected global::System.Web.UI.WebControls.HiddenField hfUsuarioDestino;
 
         /// <summary>
-        /// Control btnEnviarMensaje.
+        /// Control imgAvatar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnviarMensaje;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgAvatar;
+
+        /// <summary>
+        /// Control rptHistorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptHistorial;
     }
 }

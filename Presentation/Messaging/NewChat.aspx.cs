@@ -25,22 +25,15 @@ namespace Presentation.Messaging
         {
             int usuarioId = ObtenerUsuarioLogueadoId();
 
-            // Traer todos los usuarios activos excepto el logueado
-            var usuarios = _userService.ObtenerUsuarios()
+            var usuarios = _userService.ObtenerUsuarios(filtro)
                 .Where(u => u.IdUsuario != usuarioId)
                 .ToList();
-
-            // Aplicar filtro si se proporcionó
-            if (!string.IsNullOrEmpty(filtro))
-            {
-                usuarios = usuarios
-                    .Where(u => u.Nombre.IndexOf(filtro, StringComparison.OrdinalIgnoreCase) >= 0)
-                    .ToList();
-            }
 
             rptUsuarios.DataSource = usuarios;
             rptUsuarios.DataBind();
         }
+
+
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {

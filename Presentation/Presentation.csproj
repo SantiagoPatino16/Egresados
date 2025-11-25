@@ -128,25 +128,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminControls\AccountManagement.aspx" />
+    <Content Include="AdminControls\AdminJobOffers.aspx" />
     <Content Include="AdminControls\ValidateCompany.aspx" />
+    <Content Include="css\chat.css" />
+    <Content Include="css\inbox.css" />
     <Content Include="css\login-styles.css" />
     <Content Include="css\Main.css" />
+    <Content Include="css\newchat.css" />
     <Content Include="Events\AddEvents.aspx" />
     <Content Include="Events\EventsLoad.aspx" />
     <Content Include="Forum\Publications.aspx" />
     <Content Include="Global.asax" />
-<<<<<<< HEAD
+    <Content Include="JobBoardList\ApplyJob.aspx" />
+    <Content Include="JobBoardList\EmploymentAvailable.aspx" />
+    <Content Include="JobBoardList\EmploymentDetail.aspx" />
+    <Content Include="JobBoardList\FavoritesJobs.aspx" />
+    <Content Include="JobBoardList\JobApplicants.aspx" />
     <Content Include="Messaging\Chat.aspx" />
     <Content Include="Messaging\HUB\chat.js" />
-=======
     <Content Include="Inicio\Home.aspx" />
->>>>>>> 9cbd18f4b9cbcf9695972407f2dbf8302d96a190
     <Content Include="Messaging\Inbox.aspx" />
     <Content Include="Messaging\NewChat.aspx" />
     <Content Include="Resources\bannerPascual.png" />
+    <Content Include="Resources\events\0b6a503f-c80a-4929-a3cf-321bbe528eed.jpg" />
+    <Content Include="Resources\events\2ae4363f-95df-4b37-ac0d-5af0b13e1a00.png" />
+    <Content Include="Resources\events\62562826-68b5-4bef-ac8d-f2ec9183ba0c.png" />
+    <Content Include="Resources\events\8565e2f7-2cf6-41ec-9f17-70b2494e4267.png" />
+    <Content Include="Resources\events\aea16c61-7299-40d6-866f-c947ad2db341.jpg" />
+    <Content Include="Resources\events\b0bdd236-d412-4420-ab11-3f3df86b3b5a.png" />
+    <Content Include="Resources\events\c858337a-91ab-4154-91f8-0fd03d0870ef.jpeg" />
     <Content Include="Resources\perfiles\default.png" />
-    <Content Include="Scripts\jquery.signalR-2.4.3.js" />
-    <Content Include="Scripts\jquery.signalR-2.4.3.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.2.min.js" />
     <Content Include="Start\RegisterCompany.aspx" />
     <Content Include="AdminControls\AdminControl.aspx" />
     <Content Include="User\EditCompanyProfile.aspx" />
@@ -166,6 +179,13 @@
     </Compile>
     <Compile Include="AdminControls\AccountManagement.aspx.designer.cs">
       <DependentUpon>AccountManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControls\AdminJobOffers.aspx.cs">
+      <DependentUpon>AdminJobOffers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminControls\AdminJobOffers.aspx.designer.cs">
+      <DependentUpon>AdminJobOffers.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminControls\ValidateCompany.aspx.cs">
       <DependentUpon>ValidateCompany.aspx</DependentUpon>
@@ -207,6 +227,41 @@
     <Compile Include="Inicio\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="JobBoardList\ApplyJob.aspx.cs">
+      <DependentUpon>ApplyJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobBoardList\ApplyJob.aspx.designer.cs">
+      <DependentUpon>ApplyJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JobBoardList\EmploymentAvailable.aspx.cs">
+      <DependentUpon>EmploymentAvailable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobBoardList\EmploymentAvailable.aspx.designer.cs">
+      <DependentUpon>EmploymentAvailable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JobBoardList\EmploymentDetail.aspx.cs">
+      <DependentUpon>EmploymentDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobBoardList\EmploymentDetail.aspx.designer.cs">
+      <DependentUpon>EmploymentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JobBoardList\FavoritesJobs.aspx.cs">
+      <DependentUpon>FavoritesJobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobBoardList\FavoritesJobs.aspx.designer.cs">
+      <DependentUpon>FavoritesJobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JobBoardList\JobApplicants.aspx.cs">
+      <DependentUpon>JobApplicants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobBoardList\JobApplicants.aspx.designer.cs">
+      <DependentUpon>JobApplicants.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.Master.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,6 +292,7 @@
     <Compile Include="Messaging\NewChat.aspx.designer.cs">
       <DependentUpon>NewChat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="Start\RegisterCompany.aspx.cs">
       <DependentUpon>RegisterCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -288,10 +344,9 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="JobBoard\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Messaging\Handlers\UploadChatFile.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

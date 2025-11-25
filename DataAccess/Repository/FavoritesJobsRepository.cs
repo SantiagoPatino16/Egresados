@@ -2,6 +2,7 @@
 using DataAccess.ConnectionDB;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace DataAccess.Repository
 {
@@ -30,6 +31,8 @@ namespace DataAccess.Repository
         public List<AttributesFavoritesJobs> ListarPorEgresado(int idEgresado)
         {
             return _context.OfertasFavoritas
+                .Include("Oferta")   // CARGA TODA LA OFERTA
+                .Include("Egresado") // opcional
                 .Where(f => f.IdEgresado == idEgresado)
                 .ToList();
         }

@@ -37,5 +37,21 @@ namespace LogicBusiness.Service
         {
             _repository.Actualizar(oferta);
         }
+
+        public List<AttributesCategoriesJobs> ListarCategorias()
+        {
+            return _repository.ListarCategorias();
+        }
+
+        public List<AttributesWorkModalities> ListarModalidades()
+        {
+            return _repository.ListarModalidades();
+        }
+
+        public List<AttributesContractType> ListarTiposContrato()
+        {
+            return _repository.ListarTiposContrato();
+        }
+
     }
 }

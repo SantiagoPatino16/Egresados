@@ -9,10 +9,21 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery.signalR (ASP.NET SignalR 2.x) - se carga una sola vez en la master -->
+    <script src="../Scripts/jquery.signalR-2.4.2.min.js"></script>
 
     <!-- Main Css (para uso de toda la web) -->
     <link href="css/Main.css" rel="stylesheet" />
+
+    <!-- Estilos para inbox de mensajes -->
+    <link href="css/inbox.css" rel="stylesheet" />
+    <!-- Estilos para chats -->
+    <link href="css/chat.css" rel="stylesheet" />
 </head>
 
 
@@ -37,10 +48,11 @@
                             <a class="nav-link active" href="../Inicio/Home.aspx">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Empleos.aspx">Empleos</a>
+                            <a class="nav-link" href="../JobBoardList/EmploymentAvailable.aspx">Empleos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Messaging/Inbox.aspx">Mensajes</a>
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Events/EventsLoad.aspx">Eventos</a>
@@ -48,6 +60,26 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../Forum/Publications.aspx">Foro</a>
                         </li>
+
+
+                        <!-- Bolsa de Empleo no la ve la empresa -->
+                        <asp:PlaceHolder ID="phBolsaEmpleo" runat="server" Visible="false">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../JobBoardList/EmploymentAvailable.aspx">Empleos</a>
+                            </li>
+                        </asp:PlaceHolder>
+
+                        <!-- solo visible para empresas -->
+                        <asp:PlaceHolder ID="phJobApplicants" runat="server" Visible="false">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../JobBoardList/JobApplicants.aspx">Postulantes</a>
+                            </li>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder ID="phEmploymentCreate" runat="server" Visible="false">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../CreateOffer/EmploymentCreate.aspx">Crear Oferta de Empleo</a>
+                            </li>
+                        </asp:PlaceHolder>
                     </ul>
 
                     <!-- Dropdown usuario -->
@@ -59,10 +91,13 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="../User/Profile.aspx">Perfil</a></li>
-                                <li><a class="dropdown-item" href="~/Configuracion.aspx">Configuración</a></li>
-                                <li><button id="btnToggleTheme" type="button" class="dropdown-item">Modo Oscuro</button></li>
+
                                 <asp:PlaceHolder ID="phAdminLink" runat="server" Visible="false">
                                     <li><a class="dropdown-item" href="../AdminControls/AdminControl.aspx">Administrador</a></li>
+                                    <li><a class="dropdown-item" href="../AdminControls/AdminJobOffers.aspx">Validar Ofertas</a></li>
+                                </asp:PlaceHolder>
+                                <asp:PlaceHolder ID="phEgresadooLink" runat="server" Visible="false">
+                                    <li><a class="dropdown-item" href="/JobBoardList/FavoritesJobs.aspx">Favoritos</a></li>
                                 </asp:PlaceHolder>
                                 <li>
                                     <asp:LinkButton ID="lnkCerrarSesion" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">
@@ -72,8 +107,10 @@
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-
                             </ul>
+                        </li>
+                        <li>
+                            <button id="btnToggleTheme" type="button" class="dropdown-item">☀️</button>
                         </li>
                     </ul>
                 </div>
@@ -98,15 +135,15 @@
                 const currentTheme = localStorage.getItem("theme");
                 if (currentTheme === "dark") {
                     body.classList.add("dark-mode");
-                    toggleBtn.textContent = "Modo Claro";
+                    toggleBtn.textContent = "☀️";
                 } else {
-                    toggleBtn.textContent = "Modo Oscuro";
+                    toggleBtn.textContent = "🌑";
                 }
 
                 // Cambiar tema al hacer clic
                 toggleBtn.addEventListener("click", () => {
                     const darkModeEnabled = body.classList.toggle("dark-mode");
-                    toggleBtn.textContent = darkModeEnabled ? "Modo Claro" : "Modo Oscuro";
+                    toggleBtn.textContent = darkModeEnabled ? "☀️" : "🌑";
                     localStorage.setItem("theme", darkModeEnabled ? "dark" : "light");
                 });
             });
@@ -136,5 +173,3 @@
     </form>
 </body>
 </html>
-
-

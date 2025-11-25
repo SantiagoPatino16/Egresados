@@ -14,18 +14,32 @@ namespace DataAccess.Repository
         {
             using (var context = new RSContext())
             {
-                var reaccion = new AttributesMessageReactions
+                // Buscar si ya existe reacción del usuario en este mensaje
+                var reaccion = context.Chats
+                    .FirstOrDefault(r => r.IdMensaje == idMensaje && r.IdUsuario == idUsuario);
+
+                if (reaccion != null)
                 {
-                    IdMensaje = idMensaje,
-                    IdUsuario = idUsuario,
-                    //Se convierte el entero a enum
-                    TipoReaccion = (AttributesMessageReactions.ReactionsMessages)tipoReaccion
-                };
-                context.Chats.Add(reaccion);
+                    // Actualizar tipo de reacción
+                    reaccion.TipoReaccion = (AttributesMessageReactions.ReactionsMessages)tipoReaccion;
+                }
+                else
+                {
+                    // Crear nueva reacción
+                    reaccion = new AttributesMessageReactions
+                    {
+                        IdMensaje = idMensaje,
+                        IdUsuario = idUsuario,
+                        TipoReaccion = (AttributesMessageReactions.ReactionsMessages)tipoReaccion
+                    };
+                    context.Chats.Add(reaccion);
+                }
+
                 context.SaveChanges();
                 return reaccion;
             }
         }
+
         public bool QuitarReaccion(int idMensaje, int idUsuario)
         {
             using (var context = new RSContext())

@@ -49,7 +49,7 @@ namespace Presentation
                 }
 
                 // Redirigir a publicaciones
-                Response.Redirect("../Forum/Publications.aspx");
+                Response.Redirect("../Inicio/Home.aspx");
             }
             else
             {

@@ -16,6 +16,7 @@ namespace Common.Attributes
         {
             Aceptada = 1,
             Rechazada = 2,
+            Postulado = 3
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
