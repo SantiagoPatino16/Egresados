@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Presentation.CreateOffer;
+using System;
 using System.Web.UI;
 
 namespace Presentation
@@ -12,11 +13,20 @@ namespace Presentation
             MostrarEnlacesSegunRol();
         }
 
+        /// <summary>
+        /// Asigna el nombre del usuario al label del dropdown
+        /// </summary>
         private void AsignarNombreUsuario()
         {
             lblUsuario.Text = (Session["NombreCompleto"] as string) ?? "Invitado";
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Muestra u oculta enlaces según el rol del usuario
+        /// </summary>
+>>>>>>> 29a5a9187e03f00205a27a29bbc54015c4b253d4
         private void MostrarEnlacesSegunRol()
         {
             string rol = (Session["Rol"] as string)?.Trim() ?? string.Empty;
@@ -31,6 +41,7 @@ namespace Presentation
 
             //visible para Administradores
             phAdminLink.Visible = rol.Equals("Administrador", StringComparison.OrdinalIgnoreCase);
+<<<<<<< HEAD
         }
 
         protected void lnkCerrarSesion_Click(object sender, EventArgs e)
@@ -38,8 +49,23 @@ namespace Presentation
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Start/Login.aspx");
+=======
+>>>>>>> 29a5a9187e03f00205a27a29bbc54015c4b253d4
         }
 
+        /// <summary>
+        /// Cierra sesión y redirige al login
+        /// </summary>
+        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Start/Login.aspx");
+        }
+
+        /// <summary>
+        /// Muestra un modal simple
+        /// </summary>
         public void MostrarModal(string titulo, string mensaje, string textoBoton = "Cerrar")
         {
             litTituloModal.Text = titulo;
@@ -55,6 +81,9 @@ namespace Presentation
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", script, true);
         }
 
+        /// <summary>
+        /// Muestra un modal y redirige al cerrar
+        /// </summary>
         public void MostrarModalRedireccion(string titulo, string mensaje, string urlRedireccion, string textoBoton = "Continuar")
         {
             litTituloModal.Text = titulo;

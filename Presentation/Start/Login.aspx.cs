@@ -23,38 +23,52 @@ namespace Presentation
             string correo = txtCorreo.Text.Trim();
             string clave = txtClave.Text.Trim();
 
-            // Validaciones simples
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(clave))
             {
                 lblMensaje.Text = "Por favor complete todos los campos.";
                 return;
             }
 
-            // Validar usuario
             var usuario = _userService.ValidarUsuario(correo, clave);
 
             if (usuario != null && usuario.Activo)
             {
-                // Guardar sesión
                 Session["IdUsuario"] = usuario.IdUsuario;
                 Session["NombreCompleto"] = usuario.Nombre;
                 Session["Rol"] = usuario.Rol;
                 Session["Verificado"] = usuario.Verificado;
 
-                // Verificación obligatoria para empresas
+                // Si es empresa
+                if (usuario.Rol == "Empresa")
+                {
+                    Session["IdEmpresa"] = usuario.IdUsuario;
+                }
+
+                // Si es egresado, guarda su Id
+                if (usuario.Rol == "Egresado")
+                {
+                    Session["IdEgresado"] = usuario.IdUsuario;
+                }
+
                 if (usuario.Rol == "Empresa" && usuario.Verificado == false)
                 {
                     lblMensaje.Text = "Su cuenta aún no ha sido verificada.";
                     return;
                 }
 
+<<<<<<< HEAD
                 // Redirigir a publicaciones
                 Response.Redirect("../Inicio/Home.aspx");
+=======
+                Response.Redirect("../inicio/Home.aspx");
+>>>>>>> 29a5a9187e03f00205a27a29bbc54015c4b253d4
             }
+
             else
             {
                 lblMensaje.Text = "Usuario o contraseña incorrectos.";
             }
         }
+
     }
 }
