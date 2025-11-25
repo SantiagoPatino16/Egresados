@@ -1,54 +1,61 @@
-<%@ Page Language="C#" AutoEventWireup="true"
+Ôªø<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="EmploymentDetail.aspx.cs"
     Inherits="Presentation.JobBoardList.EmploymentDetail"
     MasterPageFile="~/MainPage.Master" %>
 
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
+    <link href="css/Main.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="MainContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h2 class="mb-4">Detalle de la Oferta</h2>
+    <div class="empdet-container">
 
-    <asp:Panel ID="pnlDetalle" runat="server" Visible="false">
+        <h2 class="empdet-title">Detalle de la Oferta</h2>
 
-        <h3><asp:Literal ID="litTitulo" runat="server"></asp:Literal></h3>
+        <!-- Panel con los datos -->
+        <asp:Panel ID="pnlDetalle" runat="server" Visible="false">
 
-        <p><strong>DescripciÛn:</strong></p>
-        <p><asp:Literal ID="litDescripcion" runat="server"></asp:Literal></p>
+            <h3 class="empdet-subtitle"><asp:Literal ID="litTitulo" runat="server"></asp:Literal></h3>
 
-        <p><strong>Requisitos:</strong></p>
-        <p><asp:Literal ID="litRequisitos" runat="server"></asp:Literal></p>
+            <p class="empdet-text"><strong class="empdet-strong">Descripci√≥n:</strong></p>
+            <p class="empdet-text"><asp:Literal ID="litDescripcion" runat="server"></asp:Literal></p>
 
-        <p><strong>Ciudad:</strong> 
-            <asp:Literal ID="litCiudad" runat="server"></asp:Literal>
-        </p>
+            <p class="empdet-text"><strong class="empdet-strong">Requisitos:</strong></p>
+            <p class="empdet-text"><asp:Literal ID="litRequisitos" runat="server"></asp:Literal></p>
 
-        <p><strong>Salario:</strong> $
-            <asp:Literal ID="litSalario" runat="server"></asp:Literal>
-        </p>
+            <p class="empdet-text"><strong class="empdet-strong">Ciudad:</strong>
+                <asp:Literal ID="litCiudad" runat="server"></asp:Literal>
+            </p>
 
-        <!-- NUEVA INFORMACI”N QUE YA EXISTE EN TU TABLA -->
+            <p class="empdet-text"><strong class="empdet-strong">Salario:</strong> $
+                <asp:Literal ID="litSalario" runat="server"></asp:Literal>
+            </p>
 
-        <p><strong>Fecha PublicaciÛn:</strong>
-            <asp:Literal ID="litFechaPublicacion" runat="server"></asp:Literal>
-        </p>
+            <p class="empdet-text"><strong class="empdet-strong">Fecha Publicaci√≥n:</strong>
+                <asp:Literal ID="litFechaPublicacion" runat="server"></asp:Literal>
+            </p>
 
-        <p><strong>Fecha Cierre:</strong>
-            <asp:Literal ID="litFechaCierre" runat="server"></asp:Literal>
-        </p>
+            <p class="empdet-text"><strong class="empdet-strong">Fecha Cierre:</strong>
+                <asp:Literal ID="litFechaCierre" runat="server"></asp:Literal>
+            </p>
 
-        <p><strong>Estado:</strong>
-            <asp:Literal ID="litEstado" runat="server"></asp:Literal>
-        </p>
+            <p class="empdet-text"><strong class="empdet-strong">Estado:</strong>
+                <asp:Literal ID="litEstado" runat="server"></asp:Literal>
+            </p>
 
-        <div class="mt-3">
-            <a href='ApplyJob.aspx?id=<%= Request.QueryString["id"] %>' class="btn btn-success">
-                Postularme
+            <!-- Bot√≥n de volver -->
+            <a href="EmploymentAvailable.aspx" class="empdet-btn-back">
+                ‚Üê Volver a la bolsa de empleo
             </a>
-        </div>
 
-    </asp:Panel>
+        </asp:Panel>
 
-    <asp:Panel ID="pnlError" runat="server" Visible="false" CssClass="alert alert-danger mt-4">
-        No se encontrÛ la oferta de empleo.
-    </asp:Panel>
+        <!-- Panel de error -->
+        <asp:Panel ID="pnlError" runat="server" Visible="false" CssClass="alert empdet-alert">
+            No se encontr√≥ la oferta de empleo.
+        </asp:Panel>
+
+    </div>
 
 </asp:Content>

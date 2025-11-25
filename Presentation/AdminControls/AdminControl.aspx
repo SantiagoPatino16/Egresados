@@ -51,6 +51,16 @@
                     </div>
                 </div>
 
+                <!-- Opción: Validar Ofertas -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-tags text-warning" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3 mb-3">Validación de Ofertas</h5>
+                            <asp:Button ID="btnValidarOfertas" runat="server" Text="Validar Ofertas" CssClass="btn btn-outline-warning rounded-pill px-4" OnClick="btnValidarOfertas_Click" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,7 +1,9 @@
 ﻿using Common.Attributes;
 using DataAccess.ConnectionDB;
 using DataAccess.Repository;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LogicBusiness.Service
 {
@@ -48,10 +50,37 @@ namespace LogicBusiness.Service
             }
         }
 
-        // listar postulaciones por empresa
+        // Listar postulaciones por empresa
         public List<AttributesApplications> ListarPorEmpresa(int idEmpresa)
         {
             return _repository.ListarPorEmpresa(idEmpresa);
+        }
+
+        // Método para verificar si un egresado ya está postulado a una oferta
+        public bool EsPostulado(int idOferta, int idEgresado)
+        {
+            using (var context = new RSContext())
+            {
+                return context.Postulaciones
+                    .Any(p => p.IdOferta == idOferta && p.IdEgresado == idEgresado && p.EstadoFinal == AttributesApplications.EstadoPostulacion.Postulado);
+            }
+        }
+
+        // Método para realizar una postulación
+        public void Postular(int idOferta, int idEgresado)
+        {
+            using (var context = new RSContext())
+            {
+                var postulacion = new AttributesApplications
+                {
+                    IdOferta = idOferta,
+                    IdEgresado = idEgresado,
+                    FechaPostulacion = DateTime.Now,
+                    EstadoFinal = AttributesApplications.EstadoPostulacion.Postulado
+                };
+                context.Postulaciones.Add(postulacion);
+                context.SaveChanges();
+            }
         }
     }
 }

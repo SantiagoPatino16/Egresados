@@ -67,10 +67,9 @@ namespace DataAccess.Repository
             return _context.Postulaciones
                 .Include(p => p.Egresado)
                 .Include(p => p.OfertaEmpleo)
-                .Include(p => p.OfertaEmpleo.Empresa)  // 🔥 necesario para que cargue IdEmpresa
+                .Include(p => p.OfertaEmpleo.Empresa)
                 .Where(p => p.OfertaEmpleo.IdEmpresa == idEmpresa)
                 .ToList();
         }
-
     }
 }

@@ -14,12 +14,31 @@ namespace Presentation.JobBoardList
         protected void btnPostular_Click(object sender, EventArgs e)
         {
             int idOferta = Convert.ToInt32(Request.QueryString["id"]);
-            int idEgresado = 1;
+            int idEgresado = Convert.ToInt32(Session["IdUsuario"]);
 
-            string cvBase64 = "";
+            string rutaRelativaCV = "";
 
             if (fuCV.HasFile)
-                cvBase64 = Convert.ToBase64String(fuCV.FileBytes);
+            {
+                // Validar que el archivo sea PDF
+                if (System.IO.Path.GetExtension(fuCV.FileName).ToLower() != ".pdf")
+                {
+                    // Aquí puedes mostrar un mensaje de error si deseas
+                    return;
+                }
+
+                // Crear nombre único para evitar sobreescrituras
+                string fileName = $"CV_{idEgresado}_{DateTime.Now.Ticks}.pdf";
+
+                // Ruta física en el servidor
+                string path = Server.MapPath("~/Resources/CV/" + fileName);
+
+                // Guardar el archivo en el servidor
+                fuCV.SaveAs(path);
+
+                // Guardamos solo la ruta que se irá a la BD
+                rutaRelativaCV = "/Resources/CV/" + fileName;
+            }
 
             var postulacion = new AttributesApplications
             {
@@ -28,11 +47,14 @@ namespace Presentation.JobBoardList
                 FechaPostulacion = DateTime.Now,
                 EstadoFinal = AttributesApplications.EstadoPostulacion.Postulado,
                 Mensaje = "Postulación creada correctamente.",
-                CvUrl = cvBase64
+
+                // Enviar solo la ruta del archivo, no base64
+                CvUrl = rutaRelativaCV
             };
 
             service.Agregar(postulacion);
             alertExito.Visible = true;
         }
+
     }
 }

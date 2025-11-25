@@ -1,58 +1,69 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JobApplicants.aspx.cs" Inherits="Presentation.JobBoardList.JobApplicants" MasterPageFile="~/MainPage.master" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JobApplicants.aspx.cs" 
+    Inherits="Presentation.JobBoardList.JobApplicants" MasterPageFile="~/MainPage.master" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 
-    <h2>Postulantes de Mis Ofertas</h2>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/Main.css" rel="stylesheet" />
 
-    <!-- Alerta Bootstrap -->
-    <div id="alertEstado" runat="server" visible="false"
-         class="alert alert-success alert-dismissible fade show" role="alert">
-        Estado actualizado correctamente.
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</asp:Content>
+
+<asp:Content ID="MainContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div class="job-applicants-page">
+
+        <h2 class="mb-4">Postulantes de Mis Ofertas</h2>
+
+        <!-- Alerta Bootstrap -->
+        <div id="alertEstado" runat="server" visible="false"
+             class="alert alert-success alert-dismissible fade show" role="alert">
+            Estado actualizado correctamente.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <asp:GridView ID="gvPostulantes" runat="server" AutoGenerateColumns="False"
+            CssClass="table table-bordered"
+            OnRowCommand="gvPostulantes_RowCommand"
+            OnRowDataBound="gvPostulantes_RowDataBound">
+
+            <Columns>
+                <asp:BoundField DataField="IdPostulacion" HeaderText="ID" />
+                <asp:BoundField DataField="Egresado.NombreCompleto" HeaderText="Egresado" />
+                <asp:BoundField DataField="OfertaEmpleo.Titulo" HeaderText="Oferta" />
+                <asp:BoundField DataField="FechaPostulacion" HeaderText="Fecha"
+                    DataFormatString="{0:dd/MM/yyyy}" />
+                <asp:BoundField DataField="EstadoFinal" HeaderText="Estado" />
+
+                <asp:TemplateField HeaderText="CV">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="hlCV" runat="server"
+                            NavigateUrl='<%# Eval("CvUrl") %>'
+                            Text="Ver CV"
+                            Target="_blank"
+                            CssClass="btn btn-primary btn-sm" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Acciones">
+                    <ItemTemplate>
+                        <asp:Button ID="btnAceptar" runat="server"
+                            Text="Aceptar"
+                            CommandName="CambiarEstado"
+                            CommandArgument='<%# Eval("IdPostulacion") + ";Aceptada" %>'
+                            CssClass="btn btn-success btn-sm" />
+
+                        <asp:Button ID="btnRechazar" runat="server"
+                            Text="Rechazar"
+                            CommandName="CambiarEstado"
+                            CommandArgument='<%# Eval("IdPostulacion") + ";Rechazada" %>'
+                            CssClass="btn btn-danger btn-sm" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+            </Columns>
+
+        </asp:GridView>
+
     </div>
-
-    <asp:GridView ID="gvPostulantes" runat="server" AutoGenerateColumns="False"
-        CssClass="table table-bordered" OnRowCommand="gvPostulantes_RowCommand" OnRowDataBound="gvPostulantes_RowDataBound">
-
-        <Columns>
-
-            <asp:BoundField DataField="IdPostulacion" HeaderText="ID" />
-
-            <asp:BoundField DataField="Egresado.NombreCompleto" HeaderText="Egresado" />
-
-            <asp:BoundField DataField="OfertaEmpleo.Titulo" HeaderText="Oferta" />
-
-            <asp:BoundField DataField="FechaPostulacion" HeaderText="Fecha"
-                DataFormatString="{0:dd/MM/yyyy}" />
-
-            <asp:BoundField DataField="EstadoFinal" HeaderText="Estado" />
-
-            <asp:TemplateField HeaderText="CV">
-                <ItemTemplate>
-                    <asp:HyperLink ID="hlCV" runat="server"
-                        NavigateUrl='<%# "data:application/pdf;base64," + Eval("CvUrl") %>'
-                        Text="Ver CV" Target="_blank" />
-                </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField HeaderText="Acciones">
-                <ItemTemplate>
-                    <asp:Button ID="btnAceptar" runat="server"
-                        Text="Aceptar"
-                        CommandName="CambiarEstado"
-                        CommandArgument='<%# Eval("IdPostulacion") + ";Aceptada" %>'
-                        CssClass="btn btn-success btn-sm" />
-
-                    <asp:Button ID="btnRechazar" runat="server"
-                        Text="Rechazar"
-                        CommandName="CambiarEstado"
-                        CommandArgument='<%# Eval("IdPostulacion") + ";Rechazada" %>'
-                        CssClass="btn btn-danger btn-sm" />
-                </ItemTemplate>
-            </asp:TemplateField>
-
-        </Columns>
-
-    </asp:GridView>
 
 </asp:Content>
