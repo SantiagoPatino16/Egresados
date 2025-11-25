@@ -32,6 +32,5 @@ namespace Common.Attributes
 
         public virtual AttributesJobOfferts OfertaEmpleo { get; set; }
         public virtual AttributesUser Egresado { get; set; }
-
     }
 }

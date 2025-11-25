@@ -129,13 +129,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer de créditos -->
-    <footer class="bg-light text-center text-muted py-3 mt-5 shadow-sm">
-        <div class="container">
-            <small>&copy; 2025 Pascual Bravo. Sistema SISC. Todos los derechos reservados.
-            </small>
-        </div>
-    </footer>
-
 </asp:Content>

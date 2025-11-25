@@ -2,186 +2,20 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body { background: #eef2f5; }
-        .app-container { max-width: 1200px; }
-        
-        /* SIDEBARS - Sin sticky, scroll normal */
-        
-        /* LEFT PROFILE */
-        .profile-card .banner {
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-top-left-radius: .5rem;
-            border-top-right-radius: .5rem;
-        }
-        .avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e9ecef 0%, #d4d9e0 100%);
-            display: inline-block;
-            border: 3px solid white;
-        }
-        .avatar-wrap {
-            margin-top: -32px;
-        }
-        .avatar-wrap .add {
-            position: absolute;
-            right: 18px;
-            bottom: -4px;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: #667eea;
-            color: white;
-            display: grid;
-            place-items: center;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .avatar-wrap .add:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
-        }
-        
-        /* EVENT CARD */
-        .img-placeholder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
-            border-radius: .35rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #adb5bd;
-            font-size: 2rem;
-        }
-        
-        .card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
-        }
-        
-        /* RIGHT SUGGESTIONS */
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #1cc5c5;
-            display: inline-block;
-            margin-right: .5rem;
-        }
-        
-        .suggestions-card .avatar {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            min-height: 40px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        
-        /* Asegurar que las imágenes de perfil sean redondas */
-        .suggestions-card img.avatar {
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        
-        /* Animación suave para el scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* NAVBAR DINÁMICO */
-        .navbar {
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .navbar.navbar-hidden {
-            transform: translateY(-100%);
-        }
-        
-        /* Imagen de evento */
-        .event-image {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            border-radius: .35rem;
-        }
-    </style>
-    
-    <script>
-        // Script para navbar que se oculta al bajar y aparece al subir
-        document.addEventListener('DOMContentLoaded', function() {
-            let lastScrollTop = 0;
-            const navbar = document.querySelector('.navbar');
-            const delta = 5; // Sensibilidad del scroll
-            
-            window.addEventListener('scroll', function() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Evitar cambios menores
-                if (Math.abs(lastScrollTop - scrollTop) <= delta) {
-                    return;
-                }
-                
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    // Bajando - ocultar navbar
-                    navbar.classList.add('navbar-hidden');
-                } else {
-                    // Subiendo - mostrar navbar
-                    navbar.classList.remove('navbar-hidden');
-                }
-                
-                lastScrollTop = scrollTop;
-            });
-        });
-        
-        // Script para cargar detalles del evento en el modal
-        function cargarDetallesEvento(btn) {
-            document.getElementById('tituloEventoModal').innerText = btn.getAttribute('data-titulo');
-            document.getElementById('descripcionEventoModal').innerText = btn.getAttribute('data-descripcion');
-            document.getElementById('lugarEventoModal').innerText = btn.getAttribute('data-lugar');
-            
-            var fechaInicio = btn.getAttribute('data-fechainicio');
-            var fechaFin = btn.getAttribute('data-fechafin');
-            var fechaTexto = fechaInicio;
-            if (fechaFin) {
-                fechaTexto += ' - ' + fechaFin;
-            }
-            document.getElementById('fechaEventoModal').innerText = fechaTexto;
-            
-            document.getElementById('organizadorEventoModal').innerText = btn.getAttribute('data-organizador');
-            document.getElementById('tipoEventoModal').innerText = btn.getAttribute('data-tipo');
-            
-            var imagen = btn.getAttribute('data-imagen');
-            if (imagen && imagen.trim() !== '') {
-                document.getElementById('imgEventoModal').src = imagen;
-            } else {
-                document.getElementById('imgEventoModal').src = '../Resources/events/default.png';
-            }
-        }
-    </script>
+    <link href="css/Main.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row g-4">
+    <div class="home-row row g-4">
         <!-- LEFT: Profile -->
         <aside class="col-lg-3 order-2 order-lg-1">
-            <div class="card shadow-sm profile-card">
-                <div class="banner"></div>
+            <div class="home-card shadow-sm home-profile-card">
+                <div class="home-banner"></div>
                 <div class="card-body">
-                    <div class="position-relative avatar-wrap w-100 text-center">
-                        <asp:Image ID="imgAvatar" runat="server" CssClass="avatar border border-3 border-white shadow-sm" Visible="false" />
-                        <span id="avatarPlaceholder" runat="server" class="avatar border border-3 border-white shadow-sm"></span>
-                        <a href="../User/Profile.aspx" class="add" title="Ver perfil">
+                    <div class="position-relative home-avatar-wrap w-100 text-center">
+                        <asp:Image ID="imgAvatar" runat="server" CssClass="home-avatar border border-3 border-white shadow-sm" Visible="false" />
+                        <span id="avatarPlaceholder" runat="server" class="home-avatar border border-3 border-white shadow-sm"></span>
+                        <a href="../User/Profile.aspx" class="home-add-btn" title="Ver perfil">
                             <i class="bi bi-eye"></i>
                         </a>
                     </div>
@@ -211,7 +45,7 @@
             
             <asp:Repeater ID="rptEventos" runat="server">
                 <ItemTemplate>
-                    <div class="card shadow-sm mb-3">
+                    <div class="home-card shadow-sm mb-3">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div>
@@ -239,7 +73,7 @@
                                     <button type="button" 
                                         class="btn btn-primary btn-sm mt-2"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#detalleEventoModal"
+                                        data-bs-target="#homeDetalleEventoModal"
                                         onclick="cargarDetallesEvento(this)"
                                         data-titulo='<%# Eval("Titulo") %>'
                                         data-descripcion='<%# Eval("Descripcion") %>'
@@ -263,7 +97,7 @@
 
         <!-- RIGHT: Suggestions -->
         <aside class="col-lg-3 order-3">
-            <div class="card shadow-sm suggestions-card">
+            <div class="home-card shadow-sm home-suggestions-card">
                 <div class="card-body">
                     <h6 class="mb-3">Sugerencias</h6>
                     <div class="vstack gap-3">
@@ -275,7 +109,7 @@
                                         <div>
                                             <div class="fw-semibold"><%# Eval("Nombre") %></div>
                                             <div class="small text-muted">
-                                                <span class="dot"></span>
+                                                <span class="home-dot"></span>
                                                 <%# Eval("Rol").ToString() == "Empresa" ? 
                                                     (Eval("SectorIndustria") ?? "Empresa") : 
                                                     (Eval("ProgramaAcademico") ?? Eval("Rol")) %>
@@ -293,7 +127,7 @@
     </div>
     
     <!-- Modal Detalles del Evento -->
-    <div class="modal fade" id="detalleEventoModal" tabindex="-1" aria-labelledby="detalleEventoLabel" aria-hidden="true">
+    <div class="modal fade" id="homeDetalleEventoModal" tabindex="-1" aria-labelledby="detalleEventoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -304,10 +138,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center mb-3">
-                        <img id="imgEventoModal" src="" alt="Imagen evento" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
+                        <img id="homeImgEventoModal" src="" alt="Imagen evento" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
                     </div>
-                    <h4 id="tituloEventoModal" class="fw-bold text-primary mb-3"></h4>
-                    <p id="descripcionEventoModal" class="text-secondary"></p>
+                    <h4 id="homeTituloEventoModal" class="fw-bold text-primary mb-3"></h4>
+                    <p id="homeDescripcionEventoModal" class="text-secondary"></p>
                     
                     <hr>
                     
@@ -315,25 +149,25 @@
                         <div class="col-md-6">
                             <p class="mb-2">
                                 <i class="bi bi-geo-alt-fill text-danger me-2"></i>
-                                <strong>Lugar:</strong> <span id="lugarEventoModal"></span>
+                                <strong>Lugar:</strong> <span id="homeLugarEventoModal"></span>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="mb-2">
                                 <i class="bi bi-tag-fill text-info me-2"></i>
-                                <strong>Tipo:</strong> <span id="tipoEventoModal"></span>
+                                <strong>Tipo:</strong> <span id="homeTipoEventoModal"></span>
                             </p>
                         </div>
                         <div class="col-12">
                             <p class="mb-2">
                                 <i class="bi bi-calendar3 text-success me-2"></i>
-                                <strong>Fecha:</strong> <span id="fechaEventoModal"></span>
+                                <strong>Fecha:</strong> <span id="homeFechaEventoModal"></span>
                             </p>
                         </div>
                         <div class="col-12">
                             <p class="mb-0">
                                 <i class="bi bi-person-fill text-warning me-2"></i>
-                                <strong>Organizador:</strong> <span id="organizadorEventoModal"></span>
+                                <strong>Organizador:</strong> <span id="homeOrganizadorEventoModal"></span>
                             </p>
                         </div>
                     </div>
@@ -346,4 +180,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let lastScrollTop = 0;
+            const navbar = document.querySelector('.home-navbar');
+            const delta = 5;
+
+            window.addEventListener('scroll', function () {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    navbar.classList.add('home-navbar-hidden');
+                } else {
+                    navbar.classList.remove('home-navbar-hidden');
+                }
+
+                lastScrollTop = scrollTop;
+            });
+        });
+
+        function cargarDetallesEvento(btn) {
+            document.getElementById('homeTituloEventoModal').innerText = btn.getAttribute('data-titulo');
+            document.getElementById('homeDescripcionEventoModal').innerText = btn.getAttribute('data-descripcion');
+            document.getElementById('homeLugarEventoModal').innerText = btn.getAttribute('data-lugar');
+
+            let fechaInicio = btn.getAttribute('data-fechainicio');
+            let fechaFin = btn.getAttribute('data-fechafin');
+            let fechaTexto = fechaInicio;
+            if (fechaFin) fechaTexto += ' - ' + fechaFin;
+            document.getElementById('homeFechaEventoModal').innerText = fechaTexto;
+
+            document.getElementById('homeOrganizadorEventoModal').innerText = btn.getAttribute('data-organizador');
+            document.getElementById('homeTipoEventoModal').innerText = btn.getAttribute('data-tipo');
+
+            let imagen = btn.getAttribute('data-imagen');
+            document.getElementById('homeImgEventoModal').src = (imagen && imagen.trim() !== '') ? imagen : '../Resources/events/default.png';
+        }
+    </script>
 </asp:Content>

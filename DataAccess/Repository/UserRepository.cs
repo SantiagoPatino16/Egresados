@@ -103,9 +103,6 @@ namespace DataAccess.Repository
             }
         }
 
-
-
-
         // Actualizar
         public bool ActualizarUsuario(AttributesUser usuario)
         {

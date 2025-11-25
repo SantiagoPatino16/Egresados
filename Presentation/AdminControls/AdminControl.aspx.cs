@@ -28,5 +28,10 @@ namespace Presentation.User
         {
             Response.Redirect("../AdminControls/AccountManagement.aspx");
         }
+
+        protected void btnValidarOfertas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../AdminControls/AdminJobOffers.aspx");
+        }
     }
 }
