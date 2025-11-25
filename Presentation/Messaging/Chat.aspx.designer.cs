@@ -11,43 +11,43 @@ namespace Presentation.Messaging
 {
 
 
-    public partial class Inbox
+    public partial class Chat
     {
 
         /// <summary>
-        /// Control txtBuscarUsuario.
+        /// Control hfUsuarioActual.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarUsuario;
+        protected global::System.Web.UI.WebControls.HiddenField hfUsuarioActual;
 
         /// <summary>
-        /// Control btnBuscar.
+        /// Control hfUsuarioDestino.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.HiddenField hfUsuarioDestino;
 
         /// <summary>
-        /// Control btnNuevoChat.
+        /// Control imgAvatar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevoChat;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgAvatar;
 
         /// <summary>
-        /// Control rptUsuarios.
+        /// Control rptHistorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUsuarios;
+        protected global::System.Web.UI.WebControls.Repeater rptHistorial;
     }
 }

@@ -17,10 +17,29 @@ body .card {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-.card:hover {
-    box-shadow: 0 10px 28px rgba(0, 42, 63, 0.18);
-    border-color: var(--color-cyan);
+.btn,
+.form-control,
+.list-group-item:first-child,
+.list-group-item:last-child {
+    border-radius: 8px;
 }
+
+.card,
+.shadow-institucional {
+    box-shadow: 0 2px 8px rgba(0,42,63,.06), 0 1px 2px rgba(0,42,63,.04);
+}
+
+/*Animaciones de entrada */
+
+.fade-slide {
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+    .fade-slide.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 
 /*  Card header */
 
@@ -33,7 +52,7 @@ body .card {
     padding: 0.9rem 1.2rem;
     border: none !important;
     border-radius: 12px 12px 0 0 !important;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
 }
 
@@ -44,6 +63,11 @@ body .card {
     padding: 1.5rem;
 }
 
+.btn {
+    transform: translateY(0);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
 /*  Botón primario */
 .btn-primary {
     background-color: var(--color-azul-oscuro);
@@ -52,7 +76,7 @@ body .card {
     border-radius: 6px;
     padding: 0.6rem 1.2rem;
     font-weight: 500;
-    transition: all 0.25s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
     .btn-primary:hover {
@@ -66,6 +90,15 @@ body .card {
         outline: none;
     }
 
+/* soporte para botones pill en markup */
+.btn.rounded-pill-end {
+    border-radius: 0 999px 999px 0;
+}
+
+.btn.rounded-pill-start {
+    border-radius: 999px 0 0 999px;
+}
+
 /*  Botón de enlace */
 .btn-link {
     color: var(--color-cyan);
@@ -78,6 +111,11 @@ body .card {
         color: var(--color-azul-oscuro);
         text-decoration: underline;
     }
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,.12);
+}
 
 /*  Formulario */
 .form-control {
@@ -143,14 +181,39 @@ body .card {
     border-radius: 10px;
 }
 
-.categoria-activa a {
-    color: white !important;
+    .categoria-activa a {
+        color: white !important;
+    }
+
+.list-group-item {
+    border-left: 3px solid transparent;
+    transition: border-color .2s ease;
 }
 
-.list-group-item:hover,
-.list-group-item:hover a {
-    background-color: var(--color-azul-oscuro) !important;
-    color: #fff !important;
+    .list-group-item:hover {
+        border-left-color: var(--color-cyan);
+    }
+
+/* Mejora de espaciado y elevación para list-group en general */
+.list-group {
+    gap: .35rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Scroll bar*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-cyan);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 /*FAVORITEJOBS*/
@@ -721,6 +784,7 @@ body.dark-mode {
         color: #fff !important;
         border-bottom: none !important;
     }
+
         body.dark-mode .card-header *,
         body.dark-mode .card-header-custom * {
             color: #fff !important;
@@ -841,37 +905,37 @@ body.dark-mode {
         border-top: 1px solid #2c2c2c !important;
     }
 
-body.dark-mode label,
-body.dark-mode .form-label,
-body.dark-mode small,
-body.dark-mode .small,
-body.dark-mode .text-muted,
-body.dark-mode .fw-semibold {
-    color: #e5e5e5 !important;
-}
+    body.dark-mode label,
+    body.dark-mode .form-label,
+    body.dark-mode small,
+    body.dark-mode .small,
+    body.dark-mode .text-muted,
+    body.dark-mode .fw-semibold {
+        color: #e5e5e5 !important;
+    }
 
-body.dark-mode textarea::placeholder,
-body.dark-mode input::placeholder {
-    color: #ffffff !important;
-    opacity: 0.8 !important;
-}
+    body.dark-mode textarea::placeholder,
+    body.dark-mode input::placeholder {
+        color: #ffffff !important;
+        opacity: 0.8 !important;
+    }
 
-body.dark-mode .text-muted {
-    color: #c0c0c0 !important;
-}
+    body.dark-mode .text-muted {
+        color: #c0c0c0 !important;
+    }
 
-body.dark-mode .card-title {
-    color: #c0c0c0 !important;
-}
+    body.dark-mode .card-title {
+        color: #c0c0c0 !important;
+    }
 
 .dark-mode .categoria-activa {
     background-color: #008b8b !important;
     color: white !important;
 }
 
-.dark-mode .categoria-activa a {
-    color: white !important;
-}
+    .dark-mode .categoria-activa a {
+        color: white !important;
+    }
 
 .dark-mode .list-group-item:hover {
     background-color: #001f3f !important;

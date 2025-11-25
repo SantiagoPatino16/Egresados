@@ -96,10 +96,11 @@ namespace LogicBusiness.Service
 
 
         // Obtener lista de usuarios activos
-        public List<AttributesUser> ObtenerUsuarios()
+        public List<AttributesUser> ObtenerUsuarios(string filtro = "")
         {
-            return _userRepository.ObtenerUsuarios();
+            return _userRepository.ObtenerUsuarios(filtro);
         }
+
 
         // Obtener un usuario por Id
         public AttributesUser ObtenerUsuarioPorId(int id)

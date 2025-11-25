@@ -1,0 +1,201 @@
+﻿/* Variables institucionales */
+:root {
+    --color-azul-oscuro: #002a3f;
+    --color-cyan: #00b2c1;
+    --color-blanco: #ffffff;
+    --gray-100: #f8f9fa;
+    --muted: rgba(0,42,63,0.06);
+    --shadow-1: 0 6px 18px rgba(0,42,63,0.10);
+    --shadow-2: 0 12px 36px rgba(0,42,63,0.14);
+}
+
+/* Título */
+body {
+    background: var(--gray-100);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+    color: var(--color-azul-oscuro);
+    letter-spacing: 0.2px;
+}
+
+/* Contenedor específico para NewChat */
+.container-xl {
+    max-width: 1180px;
+}
+
+/* Barra de búsqueda - Input group */
+.input-group {
+    align-items: center;
+    gap: 0.5rem;
+}
+
+    .input-group.input-group-lg {
+        padding: 0.45rem;
+        background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+        border-radius: 999px;
+        border: 1px solid rgba(0,178,193,0.08);
+        box-shadow: var(--shadow-1);
+    }
+
+/* Estilos para los modificadores de "pill" usados en el markup */
+.form-control.rounded-pill-start {
+    border: none;
+    border-radius: 999px 0 0 999px;
+    padding: 0.75rem 1rem;
+    box-shadow: none;
+    background: transparent;
+    min-width: 0;
+    transition: box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+
+    .form-control.rounded-pill-start:focus {
+        border-color: var(--color-cyan);
+        box-shadow: 0 6px 18px rgba(0,178,193,0.12);
+        outline: none;
+        background: #fff;
+    }
+
+/* Botón redondeado al final */
+.btn.rounded-pill-end, .btn.rounded-pill-end:focus, .btn.rounded-pill-end:active {
+    border-radius: 0 999px 999px 0;
+}
+
+/* Botón Buscar */
+.input-group .btn {
+    padding: 0.5rem 1.05rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+    background: linear-gradient(180deg, var(--color-cyan), #009da9);
+    border: none;
+    box-shadow: 0 6px 14px rgba(0,178,193,0.12);
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+
+    .input-group .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-2);
+    }
+
+/* Lista de usuarios: contenedor */
+.list-group.list-group-flush {
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: .25rem;
+}
+
+/* Lista + items */
+.list-group-item {
+    border: none;
+    border-radius: 8px;
+    margin: 0.25rem 0;
+    transition: background .18s ease-in-out, transform .12s ease;
+    padding: .75rem 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95));
+    box-shadow: 0 2px 8px rgba(0,42,63,0.04);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+    .list-group-item + .list-group-item {
+        margin-top: .5rem;
+    }
+
+    .list-group-item:hover {
+        background: rgba(0,178,193,0.06);
+        transform: translateY(-2px);
+        cursor: pointer;
+        box-shadow: 0 10px 28px rgba(0,42,63,0.06);
+    }
+
+    .list-group-item:focus-within {
+        outline: 2px solid rgba(0,178,193,0.12);
+        outline-offset: 3px;
+    }
+
+    /* Usuario - nombre */
+    .list-group-item .fw-semibold {
+        color: var(--color-azul-oscuro);
+    }
+
+/* Avatar institucional */
+.avatar-sm {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-azul-oscuro) 100%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.95);
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0,42,63,0.10), inset 0 -6px 16px rgba(255,255,255,0.06);
+}
+
+    /* Si hay imagen dentro del avatar, recortarla apropriadamente */
+    .avatar-sm img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+/* Espaciado general */
+.px-3 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.py-3 {
+    padding-top: .75rem !important;
+    padding-bottom: .75rem !important;
+}
+
+/* Scroll dentro de la lista */
+.list-group.overflow-auto {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-cyan) transparent;
+}
+
+    /* Scroll bar (Webkit) */
+    .list-group.overflow-auto::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .list-group.overflow-auto::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, rgba(0,178,193,0.9), rgba(0,178,193,0.6));
+        border-radius: 20px;
+    }
+
+    .list-group.overflow-auto::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+/* Accesibilidad: foco visible */
+a.list-group-item:focus, .btn:focus, .form-control:focus {
+    box-shadow: 0 0 0 0.18rem rgba(0,178,193,0.16);
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .avatar-sm {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 0.85rem;
+    }
+
+    .input-group.input-group-lg {
+        padding: .25rem;
+    }
+
+    .form-control.rounded-pill-start {
+        padding: .55rem .9rem;
+    }
+}

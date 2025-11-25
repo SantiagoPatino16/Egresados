@@ -3,6 +3,7 @@ using LogicBusiness.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI;
 
 namespace Presentation.Messaging
 {
@@ -15,6 +16,10 @@ namespace Presentation.Messaging
         {
             _messagesService = new MessagesService();
             _userService = new UserService();
+        }
+        MainPage MasterPage
+        {
+            get { return (MainPage)this.Master; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -62,7 +67,14 @@ namespace Presentation.Messaging
             if (Session["IdUsuario"] != null)
                 return Convert.ToInt32(Session["IdUsuario"]);
             else
-                throw new Exception("Usuario no logueado.");
+                MasterPage.MostrarModal("Error", "Usuario no logueado.");
+            return 0;
         }
+        protected void btnNuevoChat_Click(object sender, EventArgs e)
+        {
+            // Aquí puedes abrir un modal o redirigir a una página de búsqueda de usuarios
+            Response.Redirect("../Messaging/NewChat.aspx");
+        }
+
     }
 }

@@ -24,5 +24,6 @@ namespace Presentation
             Database.SetInitializer(new CreateDatabaseIfNotExists<RSContext>());
 
         }
-    }
+        }
+    
 }

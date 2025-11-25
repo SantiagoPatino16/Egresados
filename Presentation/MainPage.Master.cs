@@ -21,9 +21,6 @@ namespace Presentation
             lblUsuario.Text = (Session["NombreCompleto"] as string) ?? "Invitado";
         }
 
-        /// <summary>
-        /// Muestra u oculta enlaces según el rol del usuario
-        /// </summary>
         private void MostrarEnlacesSegunRol()
         {
             string rol = (Session["Rol"] as string)?.Trim() ?? string.Empty;
@@ -40,19 +37,12 @@ namespace Presentation
             phAdminLink.Visible = rol.Equals("Administrador", StringComparison.OrdinalIgnoreCase);
         }
 
-        /// <summary>
-        /// Cierra sesión y redirige al login
-        /// </summary>
         protected void lnkCerrarSesion_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Start/Login.aspx");
         }
-
-        /// <summary>
-        /// Muestra un modal simple
-        /// </summary>
         public void MostrarModal(string titulo, string mensaje, string textoBoton = "Cerrar")
         {
             litTituloModal.Text = titulo;

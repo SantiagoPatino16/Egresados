@@ -74,6 +74,9 @@
     <Compile Include="Attributes\AttributesComments.cs" />
     <Compile Include="Attributes\AttributesPublications.cs" />
     <Compile Include="Attributes\AttributesWorkModalities.cs" />
+    <Compile Include="DTO\AdjuntoDto.cs" />
+    <Compile Include="DTO\MensajeChatDto.cs" />
+    <Compile Include="DTO\ReaccionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
